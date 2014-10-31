@@ -39,6 +39,7 @@ set complete=.,b,t,w,d,i
 set completeopt=menuone
 
 let c_space_errors=1
+let g:airline#extensions#tabline#enabled = 1
 
 syntax on
 filetype plugin indent on
