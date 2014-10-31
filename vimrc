@@ -1,7 +1,5 @@
 
-if exists("g:loaded_pathogen")
-    call patghogen#infect()
-endif
+execute pathogen#infect()
 
 colorscheme torte
 
