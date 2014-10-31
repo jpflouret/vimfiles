@@ -4,3 +4,30 @@
 [submodule "bundle/vimp4python"]
 	path = bundle/vimp4python
 	url = https://github.com/jpflouret/vimp4python.git
+[submodule "bundle/vim-commentary"]
+	path = bundle/vim-commentary
+	url = https://github.com/tpope/vim-commentary.git
+[submodule "bundle/vim-unimpaired"]
+	path = bundle/vim-unimpaired
+	url = https://github.com/tpope/vim-unimpaired.git
+[submodule "bundle/vim-fugitive"]
+	path = bundle/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive.git
+[submodule "bundle/vim-abolish"]
+	path = bundle/vim-abolish
+	url = https://github.com/tpope/vim-abolish.git
+[submodule "bundle/vim-capslock"]
+	path = bundle/vim-capslock
+	url = https://github.com/tpope/vim-capslock.git
+[submodule "bundle/vim-surround"]
+	path = bundle/vim-surround
+	url = https://github.com/tpope/vim-surround.git
+[submodule "bundle/vim-repeat"]
+	path = bundle/vim-repeat
+	url = https://github.com/tpope/vim-repeat.git
+[submodule "bundle/vim-vinegar"]
+	path = bundle/vim-vinegar
+	url = https://github.com/tpope/vim-vinegar.git
+[submodule "bundle/vim-sleuth"]
+	path = bundle/vim-sleuth
+	url = https://github.com/tpope/vim-sleuth.git
