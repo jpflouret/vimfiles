@@ -3,8 +3,6 @@ execute pathogen#infect()
 
 colorscheme hybrid
 
-"set noswapfile
-"set viminfo=
 set history=1000
 set tabstop=4
 set shiftwidth=4
@@ -14,7 +12,7 @@ set mouse=a
 set mousehide
 set shortmess=a
 set hidden
-set nonumber
+set number
 set cmdheight=2
 set laststatus=2
 set nohlsearch
@@ -34,12 +32,18 @@ set backspace=indent,eol,start
 set guioptions=acegim
 set formatoptions=qn1
 set nospell
-set wildmode=full
-set complete=.,b,t,w,d,i
-set completeopt=menuone
 
 let c_space_errors=1
 let g:airline#extensions#tabline#enabled = 1
+
+" To make the powerline look good, install fonts from
+" https://github.com/Lokaltog/powerline-fonts/
+if has('unix')
+  let g:airline_powerline_fonts = 1
+  if has('gui_running')
+    set guifont=Droid\ Sans\ Mono\ for\ Powerline\ 10
+  endif
+endif
 
 syntax on
 filetype plugin indent on
@@ -79,7 +83,6 @@ vnoremap            <TAB>         >gv
 nnoremap            <S-TAB>       <<
 vnoremap            <S-TAB>       <gv
 nnoremap            <F3>          :set hlsearch!<CR>
-nnoremap            <S-ENTER>     O<ESC>j
 nnoremap            <S-DOWN>      O<ESC>j
 nnoremap <silent>   <S-UP>        :call DeleteEmptyLineAbove()<CR>
 nnoremap            <C-DOWN>      <C-E>
@@ -87,6 +90,13 @@ nnoremap            <C-UP>        <C-Y>
 inoremap            <C-DOWN>      <C-O><C-E>
 inoremap            <C-UP>        <C-O><C-Y>
 nnoremap <silent>   <Leader>q     :Bdelete<CR>
+
+
+"Mappings for clang-format-3.5 under ubuntu....
+if (has('unix'))
+  map     <C-K> :pyf      /usr/share/vim/addons/syntax/clang-format-3.5.py<CR>
+  imap    <C-K> <ESC>:pyf /usr/share/vim/addons/syntax/clang-format-3.5.py<CR>i
+endif
 
 augroup vimrc
   autocmd!
