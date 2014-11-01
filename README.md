@@ -33,7 +33,7 @@ Vim setup by JP Flouret
 ## Installation
 
 This repository is intended to be cloned into the user's Vim runtime folder
-(~/.vim on unix or %USERPROFILE%/vimfiles)
+(~/.vim on unix or %USERPROFILE%/vimfiles on Windows)
 
 ### Linux/Unix
 
@@ -66,7 +66,7 @@ Or alternatively:
 * Puthon 2.4+
 
 ## License
-Each plugin comes with its own license. See bundle/<plugin>/README or bundle/<plugin>/LICENSE
+Each plugin comes with its own license. See bundle/`<plugin>`/README or bundle/`<plugin>`/LICENSE
 for individual plugin licenses.
 
 Copyright (c) JP Flouret. Distributed under the same terms as Vim itself.
