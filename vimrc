@@ -1,7 +1,7 @@
 
 execute pathogen#infect()
 
-colorscheme torte
+colorscheme hybrid
 
 "set noswapfile
 "set viminfo=
@@ -86,6 +86,7 @@ nnoremap            <C-DOWN>      <C-E>
 nnoremap            <C-UP>        <C-Y>
 inoremap            <C-DOWN>      <C-O><C-E>
 inoremap            <C-UP>        <C-O><C-Y>
+nnoremap <silent>   <Leader>q     :Bdelete<CR>
 
 augroup vimrc
   autocmd!
