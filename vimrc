@@ -13,6 +13,7 @@ if has("gui_running") && !gui_initialized
 endif
 
 set autoread
+set modeline
 set history=1000
 set tabstop=4
 set shiftwidth=4
