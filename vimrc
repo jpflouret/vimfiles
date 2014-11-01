@@ -2,7 +2,9 @@
 
 execute pathogen#infect()
 
-colorscheme hybrid
+set background=dark
+colorscheme solarized
+
 if !exists('gui_initialized')
   let gui_initialized=0
 endif
@@ -44,6 +46,7 @@ set backspace=indent,eol,start
 set guioptions=aAcemg
 set formatoptions=qn1
 set nospell
+set diffopt=filler,vertical
 
 let c_space_errors=1
 let g:airline#extensions#tabline#enabled=1
@@ -124,6 +127,7 @@ noremap <silent>    <S-C-TAB>     :bprev<CR>
 noremap <silent>    <C-F6>        :bnext<CR>
 noremap <silent>    <C-F4>        :Bdelete<CR>
 nnoremap <silent>   <Leader>q     :Bdelete<CR>
+nnoremap <silent>   <F9>          :Tagbar<CR>
 
 " Make navigation with arrows similar to Windows
 nnoremap <silent>   <C-LEFT>      b
