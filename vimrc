@@ -1,4 +1,4 @@
-" vim: set ts=2 sw=2 tw=100 et fenc=utf8 ff=unix :
+" vim: set ts=2 sw=2 tw=100 et :
 
 execute pathogen#infect()
 
@@ -18,7 +18,6 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 set list
-"set listchars=tab:»\ ,trail:·,extends:>
 set mouse=a
 set mousehide
 set shortmess=a
@@ -32,7 +31,6 @@ set ignorecase
 set smartcase
 set cinoptions=:0,g0,t0,(0,w1,W4
 set encoding=utf-8
-set commentstring=//%s
 set fileformats=unix,dos,mac
 set switchbuf=useopen
 set selectmode=key
@@ -47,7 +45,7 @@ set formatoptions=qn1
 set nospell
 
 let c_space_errors=1
-let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#enabled=1
 
 " To make the powerline look good, install fonts from
 " https://github.com/Lokaltog/powerline-fonts/
@@ -63,6 +61,8 @@ filetype plugin indent on
 highlight SpecialKey guifg=#003030
 highlight Pmenu guifg=white guibg=darkmagenta
 
+
+" Delete an empte line also when hitting delete
 function! BetterDelete()
   if getline('.') =~ '^$'
     delete _
@@ -72,6 +72,7 @@ function! BetterDelete()
 endfunction
 
 
+" Deletes a line above the current line if it is empty
 function! DeleteEmptyLineAbove()
   let lineAbove = line('.')-1
   if getline(lineAbove) =~ '^\s*$'
@@ -79,20 +80,22 @@ function! DeleteEmptyLineAbove()
   endif
 endfunction
 
+
+" Cleans up all trailing whitespace and retabs the file
 function! s:CleanupFile()
   %s/\s\+$//ge
   retab
 endfunction
+command! Cleanup call s:CleanupFile()
 
+
+" Open the alternate buffer of the next file
 function! AlternateOrNext()
   if expand('#')=="" | silent! next
   else
     exe "normal! \<c-^>"
   endif
 endfunction
-
-
-command! Cleanup call s:CleanupFile()
 
 
 noremap             <Leader>*     :s/\(\s\+\)\*\(\s*\)/*\1\2/g<CR>
