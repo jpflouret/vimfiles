@@ -3,7 +3,7 @@
 execute pathogen#infect()
 
 set background=dark
-colorscheme solarized
+colorscheme hybrid
 
 if !exists('gui_initialized')
   let gui_initialized=0
@@ -49,6 +49,8 @@ set nospell
 set diffopt=filler,vertical
 
 let c_space_errors=1
+let g:yankring_replace_n_pkey='<Leader>.'
+let g:yankring_replace_n_nkey='<Leader>,'
 let g:airline#extensions#tabline#enabled=1
 
 " To make the powerline look good, install fonts from
@@ -128,6 +130,11 @@ noremap <silent>    <C-F6>        :bnext<CR>
 noremap <silent>    <C-F4>        :Bdelete<CR>
 nnoremap <silent>   <Leader>q     :Bdelete<CR>
 nnoremap <silent>   <F9>          :Tagbar<CR>
+nnoremap <silent>   <F9>          :YRShow<CR>
+
+" Folding with <Space>
+nnoremap <silent>   <Space>       @=(foldlevel('.')?'za':"\<Space>")<CR>
+vnoremap            <Space>       zf
 
 " Make navigation with arrows similar to Windows
 nnoremap <silent>   <C-LEFT>      b
