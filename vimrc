@@ -51,6 +51,7 @@ set diffopt=filler,vertical
 let c_space_errors=1
 let g:yankring_replace_n_pkey='<Leader>.'
 let g:yankring_replace_n_nkey='<Leader>,'
+let g:yankring_persist=0 "disabled for privacy
 let g:airline#extensions#tabline#enabled=1
 
 " To make the powerline look good, install fonts from
