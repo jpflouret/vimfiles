@@ -14,6 +14,8 @@ if has("gui_running") && !gui_initialized
   let gui_initialized=1
 endif
 
+scriptencoding utf-8
+set encoding=utf-8
 set autoread
 set modeline
 set history=1000
@@ -21,6 +23,7 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 set list
+set listchars=tab:»\ ,trail:·,eol:¬,extends:>,precedes:<,nbsp:+
 set mouse=a
 set mousehide
 set shortmess=a
@@ -33,7 +36,6 @@ set incsearch
 set ignorecase
 set smartcase
 set cinoptions=:0,g0,t0,(0,w1,W4
-set encoding=utf-8
 set fileformats=unix,dos,mac
 set switchbuf=useopen
 set selectmode=key
@@ -53,20 +55,28 @@ let g:yankring_replace_n_pkey='<Leader>.'
 let g:yankring_replace_n_nkey='<Leader>,'
 let g:yankring_persist=0 "disabled for privacy
 let g:airline#extensions#tabline#enabled=1
+let g:ctrlp_root_markers=['.p4config', '.clang-format', '.project']
 
 " To make the powerline look good, install fonts from
 " https://github.com/Lokaltog/powerline-fonts/
-if has('unix')
-  let g:airline_powerline_fonts = 1
-  if has('gui_running')
-    set guifont=Droid\ Sans\ Mono\ for\ Powerline\ 10
-  endif
+" or the patched windows fonts from
+" https://github.com/daagar/powerline-fonts
+if has('win32')
+  set guifont=Droid_Sans_Mono_for_Powerline:h10,Droid_Sans_Mono:h10,Lucida_console:h10
+elseif has('gui_gtk2')
+  set guifont=Droid\ Sans\ Mono\ for\ Powerline\ 10,Droid\ Sans\ Mono\ 10
+endif
+
+if has('gui_running')
+  let g:airline_powerline_fonts=(&guifont =~ "Powerline")
+else
+  " This assumes that the terminal is configured with the proper powerline fonts
+  " This would need to be set in the terminal emulator or in the default system font
+  let g:airline_powerline_fonts=1
 endif
 
 syntax on
 filetype plugin indent on
-highlight SpecialKey guifg=#003030
-highlight Pmenu guifg=white guibg=darkmagenta
 
 
 " Delete an empte line also when hitting delete
@@ -181,6 +191,7 @@ nmap <C-Space>i :scs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
 nmap <C-Space>d :scs find d <C-R>=expand("<cword>")<CR><CR>
 
 
+" Maybe these need to be moved to a per-machine vimrc?
 if (has('unix'))
   "Mappings for clang-format-3.5 under ubuntu....
   map  <silent> <C-K> :pyf      /usr/share/vim/addons/syntax/clang-format-3.5.py<CR>
