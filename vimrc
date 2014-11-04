@@ -140,7 +140,7 @@ noremap <silent>    <S-C-TAB>     :bprev<CR>
 noremap <silent>    <C-F6>        :bnext<CR>
 noremap <silent>    <C-F4>        :Bdelete<CR>
 nnoremap <silent>   <Leader>q     :Bdelete<CR>
-nnoremap <silent>   <F9>          :Tagbar<CR>
+nnoremap <silent>   <F8>          :Tagbar<CR>
 nnoremap <silent>   <F9>          :YRShow<CR>
 
 " Folding with <Space>
