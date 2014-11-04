@@ -5,7 +5,9 @@ Vim setup by JP Flouret
 ## Plugins
 
 * [Align](https://github.com/vim-scripts/Align.git)
+* [argtextobj.vim](https://github.com/vim-scripts/argtextobj.vim.git)
 * [bufexplorer](https://github.com/jlanzarotta/bufexplorer.git)
+* [CamelCaseMotion](https://github.com/bkad/CamelCaseMotion.git)
 * [ctrlp.vim](https://github.com/kien/ctrlp.vim.git)
 * [gitv](https://github.com/gregsexton/gitv.git)
 * [Gundo](https://github.com/vim-scripts/Gundo.git)
@@ -16,6 +18,7 @@ Vim setup by JP Flouret
 * [vim-airline](https://github.com/bling/vim-airline)
 * [vim-bbye](https://github.com/moll/vim-bbye.git)
 * [vim-capslock](https://github.com/tpope/vim-capslock.git)
+* [vim-colors-solarized](https://github.com/altercation/vim-colors-solarized.git)
 * [vim-commentary](https://github.com/tpope/vim-commentary.git)
 * [vim-easymotion](https://github.com/Lokaltog/vim-easymotion.git)
 * [vim-eunuch](https://github.com/tpope/vim-eunuch.git)
@@ -26,9 +29,13 @@ Vim setup by JP Flouret
 * [vim-sensible](https://github.com/tpope/vim-sensible.git)
 * [vim-sleuth](https://github.com/tpope/vim-sleuth.git)
 * [vim-surround](https://github.com/tpope/vim-surround.git)
+* [vim-textobj-entire](https://github.com/kana/vim-textobj-entire.git)
+* [vim-textobj-function](https://github.com/kana/vim-textobj-function.git)
+* [vim-textobj-user](https://github.com/kana/vim-textobj-user.git)
 * [vim-unimpaired](https://github.com/tpope/vim-unimpaired.git)
 * [vim-vinegar](https://github.com/tpope/vim-vinegar.git)
 * [vimp4python](https://github.com/jpflouret/vimp4python.git)
+* [YankRing.vim](https://github.com/vim-scripts/YankRing.vim.git)
 
 ## Installation
 
