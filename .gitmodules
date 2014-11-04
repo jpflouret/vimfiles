@@ -79,3 +79,6 @@
 [submodule "bundle/YankRing.vim"]
 	path = bundle/YankRing.vim
 	url = https://github.com/vim-scripts/YankRing.vim.git
+[submodule "bundle/argtextobj.vim"]
+	path = bundle/argtextobj.vim
+	url = https://github.com/vim-scripts/argtextobj.vim.git
