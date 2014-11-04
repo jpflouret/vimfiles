@@ -15,7 +15,7 @@ Vim setup by JP Flouret
 * [tagbar](https://github.com/majutsushi/tagbar.git)
 * [unite.vim](https://github.com/Shougo/unite.vim.git)
 * [vim-abolish](https://github.com/tpope/vim-abolish.git)
-* [vim-airline](https://github.com/bling/vim-airline)
+* [vim-airline](https://github.com/bling/vim-airline.git)
 * [vim-bbye](https://github.com/moll/vim-bbye.git)
 * [vim-capslock](https://github.com/tpope/vim-capslock.git)
 * [vim-colors-solarized](https://github.com/altercation/vim-colors-solarized.git)
@@ -52,25 +52,41 @@ This repository is intended to be cloned into the user's Vim runtime folder
     cd %USERPROFILE%
     git clone --recursive https://github.com/jpflouret/vimfiles.git vimfiles
 
-
 ### For Vim version < 7.4:
 
+#### Linux
     ln -s .vim/vimrc ~/.vimrc
 
-Or alternatively:
+#### Windows
+    echo "runtime vimrc" > ~/_vimrc
 
-    echo "runtime vimrc" > ~/.vimrc
 
-## Adding a new plugin
+## Working with vimfiles
+
+### Updating ~/.vim
+
+    cd ~/.vim
+    git pull
+    git submodule init      # Initialize new submodules
+    git submodule update    # Checkout submodules
+
+### Adding a new plugin
 
     cd ~/.vim
     git submodule add <plugin remote url> bundle/<plugin>
+
+### Updating all submodules to latest
+
+    cd ~/.vim
+    git submodule foreach "(git checkout master && git pull)&"
+    git add bundle/
+    git commit
 
 ## Requirements
 
 * Vim 7.3+
 * Python support for Vim
-* Puthon 2.4+
+* Python 2.4+
 
 ## License
 Each plugin comes with its own license. See bundle/`<plugin>`/README or bundle/`<plugin>`/LICENSE
