@@ -58,6 +58,18 @@ let g:airline#extensions#tabline#enabled=1
 let g:ctrlp_root_markers=['.p4config', '.clang-format', '.project']
 let g:SuperTabMappingForward='<C-SPACE>'
 let g:SuperTabMappingBackward='<S-C-SPACE>'
+let g:LookupFile_DisableDefaultMap=0
+let g:LookupFile_EnableRemapCmd=0
+let g:LookupFile_PreserveLastPattern=0
+let g:LookupFile_AllowNewFiles=0
+let g:LookupFile_smartcase=1
+let g:LookupFile_SearchForBufsInTabs=1
+let g:LookupFile_UsingSpecializedTag=1
+let g:LookupFile_TagExpr=string('./filenametags')
+
+if has('win32')
+  let g:tagbar_ctags_bin='d:\tools\ctags58\ctags.exe'
+endif
 
 " To make the powerline look good, install fonts from
 " https://github.com/Lokaltog/powerline-fonts/
