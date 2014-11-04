@@ -56,6 +56,8 @@ let g:yankring_replace_n_nkey='<Leader>,'
 let g:yankring_persist=0 "disabled for privacy
 let g:airline#extensions#tabline#enabled=1
 let g:ctrlp_root_markers=['.p4config', '.clang-format', '.project']
+let g:SuperTabMappingForward='<C-SPACE>'
+let g:SuperTabMappingBackward='<S-C-SPACE>'
 
 " To make the powerline look good, install fonts from
 " https://github.com/Lokaltog/powerline-fonts/
@@ -120,7 +122,6 @@ nnoremap            <Leader>v     :e $MYVIMRC<CR>
 nnoremap            <Leader>p     :source $MYVIMRC<CR>
 inoremap <silent>   <ESC>         <ESC>`^
 nnoremap            <C-S>         :w<CR>
-inoremap            <C-SPACE>     <C-N>
 inoremap            <C-BS>        <C-W>
 nnoremap <silent>   <DEL>         :call BetterDelete()<CR>
 nnoremap            <TAB>         >>
@@ -144,8 +145,8 @@ nnoremap <silent>   <F8>          :Tagbar<CR>
 nnoremap <silent>   <F9>          :YRShow<CR>
 
 " Folding with <Space>
-nnoremap <silent>   <Space>       @=(foldlevel('.')?'za':"\<Space>")<CR>
-vnoremap            <Space>       zf
+nnoremap <silent>   <SPACE>       @=(foldlevel('.')?'za':"\<SPACE>")<CR>
+vnoremap            <SPACE>       zf
 
 " Make navigation with arrows similar to Windows
 nnoremap <silent>   <C-LEFT>      b
