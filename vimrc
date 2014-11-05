@@ -132,6 +132,10 @@ function! AlternateOrNext()
 endfunction
 
 
+set grepprg=qgrep
+command! -nargs=1 Qgrep :execute 'grep search '.g:QGREP_PROJ.' '.<q-args>
+
+
 noremap             <Leader>*     :s/\(\s\+\)\*\(\s*\)/*\1\2/g<CR>
 nnoremap            <Leader>v     :e $MYVIMRC<CR>
 nnoremap            <Leader>p     :source $MYVIMRC<CR>
@@ -152,9 +156,10 @@ noremap <silent>    <C-TAB>       :bnext<CR>
 noremap <silent>    <S-C-TAB>     :bprev<CR>
 noremap <silent>    <C-F6>        :bnext<CR>
 noremap <silent>    <C-F4>        :Bdelete<CR>
-nnoremap <silent>   <Leader>q     :Bdelete<CR>
+nnoremap <silent>   <Leader>bd    :Bdelete<CR>
 nnoremap <silent>   <F8>          :Tagbar<CR>
 nnoremap <silent>   <F9>          :YRShow<CR>
+nnoremap <silent>   <Leader>q     :Qgrep <cword><CR>
 
 cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<cr>
 map <leader>ew :e %%
@@ -226,5 +231,6 @@ augroup vimrc
     "Maximize the window on Windows
     autocmd GUIEnter * simalt ~x
   endif
+  autocmd QuickFixCmdPost *grep* copen
 augroup END
 
