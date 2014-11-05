@@ -160,6 +160,7 @@ nnoremap <silent>   <Leader>bd    :Bdelete<CR>
 nnoremap <silent>   <F8>          :Tagbar<CR>
 nnoremap <silent>   <F9>          :YRShow<CR>
 nnoremap <silent>   <Leader>q     :Qgrep <cword><CR>
+nnoremap <silent>   <Leader>a     :A<CR>
 
 cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<cr>
 map <leader>ew :e %%
