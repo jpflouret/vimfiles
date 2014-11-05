@@ -14,6 +14,9 @@ if has("gui_running") && !gui_initialized
   let gui_initialized=1
 endif
 
+" Run vim-sensible now so that we can override the settings
+runtime! plugin/sensible.vim
+
 scriptencoding utf-8
 set encoding=utf-8
 set autoread
@@ -38,10 +41,7 @@ set smartcase
 set cinoptions=:0,g0,t0,(0,w1,W4
 set fileformats=unix,dos,mac
 set switchbuf=useopen
-set selectmode=key
-set mousemodel=popup
-set keymodel=startsel
-set selection=inclusive
+set mousemodel=popup_setpos
 set whichwrap=b,s,<,>,~,[,]
 set nowrap
 set backspace=indent,eol,start
@@ -51,6 +51,7 @@ set nospell
 set diffopt=filler,vertical
 set colorcolumn=+1
 set textwidth=120
+set nowildmenu
 
 let c_space_errors=1
 let g:yankring_replace_n_pkey='<Leader>.'
@@ -137,6 +138,7 @@ nnoremap            <Leader>p     :source $MYVIMRC<CR>
 inoremap <silent>   <ESC>         <ESC>`^
 nnoremap            <C-S>         :w<CR>
 inoremap            <C-BS>        <C-W>
+cnoremap            <C-BS>        <C-W>
 nnoremap <silent>   <DEL>         :call BetterDelete()<CR>
 nnoremap            <TAB>         >>
 vnoremap            <TAB>         >gv
@@ -157,6 +159,12 @@ noremap <silent>    <C-F4>        :Bdelete<CR>
 nnoremap <silent>   <Leader>q     :Bdelete<CR>
 nnoremap <silent>   <F8>          :Tagbar<CR>
 nnoremap <silent>   <F9>          :YRShow<CR>
+
+cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<cr>
+map <leader>ew :e %%
+map <leader>es :sp %%
+map <leader>ev :vsp %%
+map <leader>et :tabe %%
 
 " Folding with <Space>
 nnoremap <silent>   <SPACE>       @=(foldlevel('.')?'za':"\<SPACE>")<CR>
@@ -218,7 +226,6 @@ endif
 
 augroup vimrc
   autocmd!
-  autocmd BufRead,BufEnter * silent! lcd %:p:h    " Change directory to the current buffer's dir
   if (has('win32'))
     "Maximize the window on Windows
     autocmd GUIEnter * simalt ~x
