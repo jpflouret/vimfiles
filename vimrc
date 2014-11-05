@@ -140,10 +140,6 @@ nnoremap            <C-S>         :w<CR>
 inoremap            <C-BS>        <C-W>
 cnoremap            <C-BS>        <C-W>
 nnoremap <silent>   <DEL>         :call BetterDelete()<CR>
-nnoremap            <TAB>         >>
-vnoremap            <TAB>         >gv
-nnoremap            <S-TAB>       <<
-vnoremap            <S-TAB>       <gv
 nnoremap            <F3>          :set hlsearch!<CR>
 nnoremap            <S-DOWN>      O<ESC>j
 nnoremap <silent>   <S-UP>        :call DeleteEmptyLineAbove()<CR>
