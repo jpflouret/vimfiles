@@ -49,6 +49,8 @@ set guioptions=aAcemg
 set formatoptions=qn1
 set nospell
 set diffopt=filler,vertical
+set colorcolumn=+1
+set textwidth=120
 
 let c_space_errors=1
 let g:yankring_replace_n_pkey='<Leader>.'
