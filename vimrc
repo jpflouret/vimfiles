@@ -136,7 +136,7 @@ function! <SID>AlternateOrNext()
 endfunction
 
 
-command SynStack call <SID>SynStack()
+command! SynStack call <SID>SynStack()
 function! <SID>SynStack()
   if !exists("*synstack")
     return
@@ -161,8 +161,6 @@ inoremap            <C-BS>        <C-W>
 cnoremap            <C-BS>        <C-W>
 nnoremap            <F3>          :set hlsearch!<CR>
 nnoremap            <S-DOWN>      O<ESC>j
-nnoremap            <C-DOWN>      <C-E>
-nnoremap            <C-UP>        <C-Y>
 inoremap            <C-DOWN>      <C-O><C-E>
 inoremap            <C-UP>        <C-O><C-Y>
 noremap <silent>    <C-TAB>       :bnext<CR>
@@ -228,6 +226,13 @@ nmap <C-Space>f :scs find f <C-R>=expand("<cfile>")<CR><CR>
 nmap <C-Space>i :scs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
 nmap <C-Space>d :scs find d <C-R>=expand("<cword>")<CR><CR>
 
+
+" Bubble single lines using vim-unimpaired
+nmap <C-Up> [e
+nmap <C-Down> ]e
+" Bubble multiple lines using vim-unimpaired
+vmap <C-Up> [egv
+vmap <C-Down> ]egv
 
 " Maybe these need to be moved to a per-machine vimrc?
 if (has('unix'))
