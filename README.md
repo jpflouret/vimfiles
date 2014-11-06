@@ -4,7 +4,6 @@ Vim setup by JP Flouret
 
 ## Plugins
 
-* [Align](https://github.com/vim-scripts/Align.git)
 * [alternate](https://github.com/vim-scripts/a.vim)
 * [argtextobj.vim](https://github.com/vim-scripts/argtextobj.vim.git)
 * [bufexplorer](https://github.com/jlanzarotta/bufexplorer.git)
