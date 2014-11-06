@@ -231,11 +231,24 @@ endif
 
 augroup vimrc
   autocmd!
+
+  " Maximize the window on Windows
   if (has('win32'))
-    "Maximize the window on Windows
     autocmd GUIEnter * simalt ~x
   endif
-  autocmd FileType * setlocal formatoptions-=o
-  autocmd QuickFixCmdPost *grep* copen
-augroup END
 
+  " Change formatoptions regardless of filetype
+  autocmd FileType * setlocal formatoptions-=o
+
+  " Auto open qflist after grep
+  autocmd QuickFixCmdPost *grep* copen
+
+  " Restore line position
+  autocmd BufReadPost *
+        \ if line("'\"") > 1 && line("'\"") <= line("$") |
+        \   exe "normal! g`\"" |
+        \ endif
+
+  " K looks up help in .vim files instead of running man
+  autocmd FileType vim  nmap K  :help <c-r><c-w><cr>
+augroup END
