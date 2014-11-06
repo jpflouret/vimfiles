@@ -153,7 +153,7 @@ endif
 
 
 noremap             <Leader>*     :s/\(\s\+\)\*\(\s*\)/*\1\2/g<CR>
-nnoremap            <Leader>v     :tabe $MYVIMRC<CR>
+nnoremap            <Leader>v     :e $MYVIMRC<CR>
 nnoremap            <Leader>p     :source $MYVIMRC<CR>
 nnoremap            <C-S>         :update<CR>
 inoremap            <C-S>         <C-O>:update<CR>
