@@ -132,8 +132,11 @@ function! AlternateOrNext()
 endfunction
 
 
-set grepprg=qgrep
-command! -nargs=1 Qgrep :execute 'grep search '.g:QGREP_PROJ.' '.<q-args>
+if has('win32') " I don't have qgrep working on linux yet
+  set grepprg=qgrep
+  command! -nargs=1 Qgrep :execute 'silent grep! search '.g:QGREP_PROJ.' '.<q-args>
+  nnoremap <silent>   <Leader>g     :Qgrep <cword><CR>
+endif
 
 
 noremap             <Leader>*     :s/\(\s\+\)\*\(\s*\)/*\1\2/g<CR>
@@ -160,7 +163,6 @@ nnoremap <silent>   <Leader>q     :Bdelete<CR>
 nnoremap <silent>   <Leader>bd    :Bdelete<CR>
 nnoremap <silent>   <F8>          :Tagbar<CR>
 nnoremap <silent>   <F9>          :YRShow<CR>
-nnoremap <silent>   <Leader>g     :Qgrep <cword><CR>
 nnoremap <silent>   <Leader>a     :A<CR>
 
 cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<cr>
