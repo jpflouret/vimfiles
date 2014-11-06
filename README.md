@@ -12,6 +12,7 @@ Vim setup by JP Flouret
 * [gitv](https://github.com/gregsexton/gitv.git)
 * [Gundo](https://github.com/vim-scripts/Gundo.git)
 * [supertab](https://github.com/ervandew/supertab.git)
+* [tabular](https://github.com/godlygeek/tabular.git)
 * [tagbar](https://github.com/majutsushi/tagbar.git)
 * [unite.vim](https://github.com/Shougo/unite.vim.git)
 * [vim-abolish](https://github.com/tpope/vim-abolish.git)
