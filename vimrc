@@ -240,8 +240,9 @@ augroup vimrc
   " Change formatoptions regardless of filetype
   autocmd FileType * setlocal formatoptions-=o
 
-  " Auto open qflist after grep
-  autocmd QuickFixCmdPost *grep* copen
+  " Auto open qf window after grep
+  autocmd QuickFixCmdPost [^l]*grep*  cwindow
+  autocmd QuickFixCmdPost l*grep*     lwindow
 
   " Restore line position
   autocmd BufReadPost *
