@@ -98,7 +98,8 @@ filetype plugin indent on
 
 
 " Delete an empte line also when hitting delete
-function! BetterDelete()
+nnoremap <silent> <DEL> :call <SID>DeleteOrDeleteLine()<CR>
+function! <SID>DeleteOrDeleteLine()
   if getline('.') =~ '^$'
     delete _
   else
@@ -108,7 +109,8 @@ endfunction
 
 
 " Deletes a line above the current line if it is empty
-function! DeleteEmptyLineAbove()
+nnoremap <silent> <S-UP> :call <SID>DeleteEmptyLineAbove()<CR>
+function! <SID>DeleteEmptyLineAbove()
   let lineAbove = line('.')-1
   if getline(lineAbove) =~ '^\s*$'
     exe lineAbove . " delete _"
@@ -117,20 +119,30 @@ endfunction
 
 
 " Cleans up all trailing whitespace and retabs the file
-function! s:CleanupFile()
+command! Cleanup call <SID>CleanupFile()
+function! <SID>CleanupFile()
   %s/\s\+$//ge
   retab
 endfunction
-command! Cleanup call s:CleanupFile()
 
 
 " Open the alternate buffer of the next file
-function! AlternateOrNext()
+noremap <silent> <C-^> :call <SID>AlternateOrNext()<CR>
+function! <SID>AlternateOrNext()
   if expand('#')=="" | silent! next
   else
     exe "normal! \<c-^>"
   endif
 endfunction
+
+
+command SynStack call <SID>SynStack()
+function! <SID>SynStack()
+  if !exists("*synstack")
+    return
+  endif
+  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+endfunc
 
 
 if has('win32') " I don't have qgrep working on linux yet
@@ -147,15 +159,12 @@ nnoremap            <C-S>         :update<CR>
 inoremap            <C-S>         <C-O>:update<CR>
 inoremap            <C-BS>        <C-W>
 cnoremap            <C-BS>        <C-W>
-nnoremap <silent>   <DEL>         :call BetterDelete()<CR>
 nnoremap            <F3>          :set hlsearch!<CR>
 nnoremap            <S-DOWN>      O<ESC>j
-nnoremap <silent>   <S-UP>        :call DeleteEmptyLineAbove()<CR>
 nnoremap            <C-DOWN>      <C-E>
 nnoremap            <C-UP>        <C-Y>
 inoremap            <C-DOWN>      <C-O><C-E>
 inoremap            <C-UP>        <C-O><C-Y>
-noremap <silent>    <C-^>         :call AlternateOrNext()<CR>
 noremap <silent>    <C-TAB>       :bnext<CR>
 noremap <silent>    <S-C-TAB>     :bprev<CR>
 noremap <silent>    <C-F6>        :bnext<CR>
