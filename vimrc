@@ -11,6 +11,7 @@ endif
 
 if has("gui_running") && !gui_initialized
   set lines=60 columns=200
+  set guioptions=aAcemg
   let gui_initialized=1
 endif
 
@@ -45,7 +46,6 @@ set mousemodel=popup_setpos
 set whichwrap=b,s,<,>,~,[,]
 set nowrap
 set backspace=indent,eol,start
-set guioptions=aAcemg
 set nospell
 set diffopt=filler,vertical
 set colorcolumn=+1
@@ -141,7 +141,7 @@ endif
 
 
 noremap             <Leader>*     :s/\(\s\+\)\*\(\s*\)/*\1\2/g<CR>
-nnoremap            <Leader>v     :e $MYVIMRC<CR>
+nnoremap            <Leader>v     :tabe $MYVIMRC<CR>
 nnoremap            <Leader>p     :source $MYVIMRC<CR>
 nnoremap            <C-S>         :w<CR>
 inoremap            <C-BS>        <C-W>
