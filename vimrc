@@ -141,7 +141,6 @@ endif
 noremap             <Leader>*     :s/\(\s\+\)\*\(\s*\)/*\1\2/g<CR>
 nnoremap            <Leader>v     :e $MYVIMRC<CR>
 nnoremap            <Leader>p     :source $MYVIMRC<CR>
-inoremap <silent>   <ESC>         <ESC>`^
 nnoremap            <C-S>         :w<CR>
 inoremap            <C-BS>        <C-W>
 cnoremap            <C-BS>        <C-W>
