@@ -46,7 +46,6 @@ set whichwrap=b,s,<,>,~,[,]
 set nowrap
 set backspace=indent,eol,start
 set guioptions=aAcemg
-set formatoptions=qn1
 set nospell
 set diffopt=filler,vertical
 set colorcolumn=+1
@@ -235,6 +234,7 @@ augroup vimrc
     "Maximize the window on Windows
     autocmd GUIEnter * simalt ~x
   endif
+  autocmd FileType * setlocal formatoptions-=o
   autocmd QuickFixCmdPost *grep* copen
 augroup END
 
