@@ -86,9 +86,11 @@ endif
 if has('gui_running')
   let g:airline_powerline_fonts=(&guifont =~ "Powerline")
 else
-  " This assumes that the terminal is configured with the proper powerline fonts
-  " This would need to be set in the terminal emulator or in the default system font
-  let g:airline_powerline_fonts=1
+  if !(&term == 'linux')
+    " This assumes that the terminal is configured with the proper powerline fonts
+    " This would need to be set in the terminal emulator or in the default system font
+    let g:airline_powerline_fonts=1
+  endif
 endif
 
 syntax on
