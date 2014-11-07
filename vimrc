@@ -112,7 +112,6 @@ if has('autocmd')
 endif
 
 " Auxiliary functions {{{1
-
 " Delete an empty line also when hitting delete {{{2
 nnoremap <silent> <DEL> :call <SID>DeleteOrDeleteLine()<CR>
 function! <SID>DeleteOrDeleteLine()
@@ -211,7 +210,7 @@ endif
 
 
 " Key mappings {{{1
-" vimrc {{{2
+" Manipulate .vimrc {{{2
 nnoremap <silent> <Leader>v :e $MYVIMRC<CR>
 nnoremap <silent> <Leader>p :source $MYVIMRC<CR>
 
