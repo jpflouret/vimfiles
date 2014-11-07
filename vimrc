@@ -11,7 +11,7 @@ colorscheme hybrid
 if !exists('gui_initialized')
   let gui_initialized=0
 endif
-if has("gui_running") && !gui_initialized
+if has('gui_running') && !gui_initialized
   set lines=60 columns=200
   set guioptions=aAcemg
   let gui_initialized=1
@@ -94,7 +94,7 @@ if has('unix')
 endif
 
 if has('gui_running')
-  let g:airline_powerline_fonts=(&guifont =~ "Powerline")
+  let g:airline_powerline_fonts=(&guifont =~ 'Powerline')
 else
   if !(&term == 'linux')
     " This assumes that the terminal is configured with the proper powerline fonts
@@ -119,7 +119,7 @@ function! <SID>DeleteOrDeleteLine()
   if getline('.') =~ '^$'
     delete _
   else
-    execute "normal! \<DEL>"
+    execute 'normal! \<DEL>'
   endif
 endfunction
 
@@ -128,7 +128,7 @@ endfunction
 " function! <SID>DeleteEmptyLineAbove()
 "   let lineAbove = line('.')-1
 "   if getline(lineAbove) =~ '^\s*$'
-"     exe lineAbove . " delete _"
+"     exe lineAbove . ' delete _'
 "   endif
 " endfunction
 
@@ -144,9 +144,9 @@ endfunction
 " Open the alternate buffer of the next file {{{2
 noremap <silent> <C-^> :call <SID>AlternateOrNext()<CR>
 function! <SID>AlternateOrNext()
-  if expand('#')=="" | silent! next
+  if expand('#')=='' | silent! next
   else
-    exe "normal! \<c-^>"
+    exe 'normal! \<c-^>'
   endif
 endfunction
 
@@ -154,10 +154,10 @@ endfunction
 " Show syntax highlight stack {{{2
 command! SynStack call <SID>SynStack()
 function! <SID>SynStack()
-  if !exists("*synstack")
+  if !exists('*synstack')
     return
   endif
-  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, 'name')')
 endfunc
 
 
@@ -176,7 +176,7 @@ endif
 " Show the fold text first before the number of lines {{{2
 function! GetFoldText()
   let foldsize=v:foldend-v:foldstart
-  return getline(v:foldstart).'  ... ['.foldsize.' lines]'
+  return getline(v:foldstart).'  [... '.foldsize.' more lines]'
 endfunction
 
 
@@ -223,7 +223,7 @@ map <leader>ev :vsp %%
 map <leader>et :tabe %%
 
 " Folding with <Space> {{{2
-nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
+nnoremap <silent> <Space> @=(foldlevel('.')?'za':'\<Space>')<CR>
 vnoremap <Space> zf
 
 " Use C-Arrow for window navigation {{{2
@@ -244,26 +244,26 @@ noremap            <Right>       <NOP>
 
 
 " cscope mappings {{{2
-nmap <C-\>s :cs find s <C-R>=expand("<cword>")<CR><CR>
-nmap <C-\>g :cs find g <C-R>=expand("<cword>")<CR><CR>
-nmap <C-\>c :cs find c <C-R>=expand("<cword>")<CR><CR>
-nmap <C-\>t :cs find t <C-R>=expand("<cword>")<CR><CR>
-nmap <C-\>e :cs find e <C-R>=expand("<cword>")<CR><CR>
-nmap <C-\>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
-nmap <C-\>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
-nmap <C-\>d :cs find d <C-R>=expand("<cword>")<CR><CR>
+nmap <C-\>s :cs find s <C-R>=expand('<cword>')<CR><CR>
+nmap <C-\>g :cs find g <C-R>=expand('<cword>')<CR><CR>
+nmap <C-\>c :cs find c <C-R>=expand('<cword>')<CR><CR>
+nmap <C-\>t :cs find t <C-R>=expand('<cword>')<CR><CR>
+nmap <C-\>e :cs find e <C-R>=expand('<cword>')<CR><CR>
+nmap <C-\>f :cs find f <C-R>=expand('<cfile>')<CR><CR>
+nmap <C-\>i :cs find i ^<C-R>=expand('<cfile>')<CR>$<CR>
+nmap <C-\>d :cs find d <C-R>=expand('<cword>')<CR><CR>
 
 " Using 'CTRL-spacebar' then a search type makes the vim window
 " split horizontally, with search result displayed in
 " the new window.
-nmap <C-Space>s :scs find s <C-R>=expand("<cword>")<CR><CR>
-nmap <C-Space>g :scs find g <C-R>=expand("<cword>")<CR><CR>
-nmap <C-Space>c :scs find c <C-R>=expand("<cword>")<CR><CR>
-nmap <C-Space>t :scs find t <C-R>=expand("<cword>")<CR><CR>
-nmap <C-Space>e :scs find e <C-R>=expand("<cword>")<CR><CR>
-nmap <C-Space>f :scs find f <C-R>=expand("<cfile>")<CR><CR>
-nmap <C-Space>i :scs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
-nmap <C-Space>d :scs find d <C-R>=expand("<cword>")<CR><CR>
+nmap <C-Space>s :scs find s <C-R>=expand('<cword>')<CR><CR>
+nmap <C-Space>g :scs find g <C-R>=expand('<cword>')<CR><CR>
+nmap <C-Space>c :scs find c <C-R>=expand('<cword>')<CR><CR>
+nmap <C-Space>t :scs find t <C-R>=expand('<cword>')<CR><CR>
+nmap <C-Space>e :scs find e <C-R>=expand('<cword>')<CR><CR>
+nmap <C-Space>f :scs find f <C-R>=expand('<cfile>')<CR><CR>
+nmap <C-Space>i :scs find i ^<C-R>=expand('<cfile>')<CR>$<CR>
+nmap <C-Space>d :scs find d <C-R>=expand('<cword>')<CR><CR>
 
 
 " Text bubbling {{{2
