@@ -140,16 +140,6 @@ function! <SID>CleanupFile()
 endfunction
 
 
-" Open the alternate buffer of the next file {{{2
-noremap <silent> <C-^> :call <SID>AlternateOrNext()<CR>
-function! <SID>AlternateOrNext()
-  if expand('#')=='' | silent! next
-  else
-    exe 'normal! \<c-^>'
-  endif
-endfunction
-
-
 " Show syntax highlight stack {{{2
 command! SynStack call <SID>SynStack()
 function! <SID>SynStack()
