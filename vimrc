@@ -203,9 +203,12 @@ noremap <silent> <C-TAB> :bnext<CR>
 noremap <silent> <S-C-TAB> :bprev<CR>
 noremap <silent> <C-F6> :bnext<CR>
 noremap <silent> <C-F4> :Bdelete<CR>
+
+" Function keys {{{2
 nnoremap <silent> <F2> :Tagbar<CR>
 nnoremap <silent> <F3> :set hlsearch!<CR>
 nnoremap <silent> <F4> :GundoToggle<CR>
+"nnoremap <silent> <F5> :LookupFile<CR> " this is the default
 nnoremap <silent> <F8> :YRShow<CR>
 
 " Control-Backspace deletes a word {{{2
