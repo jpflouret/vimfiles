@@ -172,12 +172,23 @@ function! QuickfixFilenames()
 endfunction
 
 
+" Visual star search from vimcasts.org {{{2
+function! s:VSetSearch(cmdtype)
+  let temp = @s
+  norm! gv"sy
+  let @/ = '\V' . substitute(escape(@s, a:cmdtype.'\'), '\n', '\\n', 'g')
+  let @s = temp
+endfunction
+xnoremap * :<C-u>call <SID>VSetSearch('/')<CR>/<C-R>=@/<CR><CR>
+xnoremap # :<C-u>call <SID>VSetSearch('?')<CR>?<C-R>=@/<CR><CR>
+
+
 " Folding configuration {{{1
 " Fold options {{{2
 set foldcolumn=3
 set foldtext=GetFoldText()
 
-" Enable syntax folding for c++ and python
+" Enable syntax folding for c++ and python {{{2
 if has('autocmd')
   autocmd Syntax python setlocal foldmethod=indent
   autocmd Syntax c,cpp setlocal foldmethod=syntax
