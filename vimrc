@@ -189,7 +189,7 @@ endif
 function! GetFoldText()
   let w = &textwidth
   if w <= 0
-    w = 78
+    let w = winwidth(0) - &numberwidth - &foldcolumn
   endif
   let foldsize=v:foldend-v:foldstart
   let text=getline(v:foldstart)
