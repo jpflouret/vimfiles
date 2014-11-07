@@ -273,4 +273,7 @@ augroup vimrc
 
   " K looks up help in .vim files instead of running man
   autocmd FileType vim  nmap K  :help <c-r><c-w><cr>
+
+  " Auto cleanup of vim-fugitive buffers
+  autocmd BufReadPost fugitive://* set bufhidden=delete
 augroup END
