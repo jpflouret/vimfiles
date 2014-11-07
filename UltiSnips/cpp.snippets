@@ -1,0 +1,37 @@
+priority -50
+
+extends c
+
+# We want to overwrite everything in parent ft.
+priority -49
+
+snippet beginend "$1.begin(), $1.end() (beginend)"
+${1:v}${1/^.*?(-)?(>)?$/(?2::(?1:>:.))/}begin(), $1${1/^.*?(-)?(>)?$/(?2::(?1:>:.))/}end()
+endsnippet
+
+snippet class "class .. (class)"
+class $1
+{
+public:
+	${1/(\w+).*/$1/}(${2:arguments});
+	virtual ~${1/(\w+).*/$1/}();
+private:
+	$0
+};
+endsnippet
+
+snippet ifnn "if not null" 
+if ($1 != nullptr)
+{
+	${VISUAL}$0
+}
+endsnippet
+
+snippet namespace "namespace .. (namespace)"
+namespace $1
+{
+	${VISUAL}${0}
+}
+endsnippet
+
+# vim:ft=snippets:

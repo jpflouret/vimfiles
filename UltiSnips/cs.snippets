@@ -1,0 +1,199 @@
+priority -50
+
+snippet namespace "namespace" b
+namespace $1
+{
+	${VISUAL}$0
+}
+endsnippet
+
+snippet class "class" w
+class $1
+{
+	$0
+}
+endsnippet
+
+snippet struct "struct" w
+struct $1
+{
+	$0
+}
+endsnippet
+
+snippet interface "interface" w
+interface I$1
+{
+	$0
+}
+endsnippet
+
+snippet enum "enumeration" b
+enum $1
+{
+	$0
+};
+endsnippet
+
+
+snippet prop "Simple property declaration" b
+public ${1:int} ${2:MyProperty} { get; set; }
+endsnippet
+
+snippet propfull "Full property declaration" b
+private ${1:int} ${2:_myProperty};
+public $1 ${3:MyProperty}
+{
+	get { return $2; }
+	set { $2 = value; }
+}
+endsnippet
+
+snippet propg "Property with a private setter" b
+public ${1:int} ${2:MyProperty} { get; private set; }
+endsnippet
+
+
+snippet for "for loop" b
+for ($1;$2;$3)
+{
+	${VISUAL}$0
+}
+endsnippet
+
+snippet fori "for loop (int)" b
+for (int ${1:i} = 0; $1 < ${2:count}; ++$1)
+{
+	${VISUAL}$0
+}
+endsnippet
+
+snippet foreach "foreach loop" b
+foreach (${3:var} ${1:item} in ${2:items})
+{
+	${VISUAL}$0
+}
+endsnippet
+
+snippet while "while loop" b
+while (${1:true})
+{
+	${VISUAL}$0
+}
+endsnippet
+
+snippet do "do loop" b
+do
+{
+	${VISUAL}$0
+} while (${1:true});
+endsnippet
+
+
+snippet if "if statement" b
+if ($1)
+{
+	${VISUAL}$0
+}
+endsnippet
+
+snippet ife "if else statement" b
+if ($1)
+{
+	${VISUAL}$0
+}
+else
+{
+}
+endsnippet
+
+snippet elif "else if" b
+else if ($1)
+{
+	${VISUAL}$0
+}
+endsnippet
+
+snippet ifnn "if not null" b
+if ($1 != null)
+{
+	${VISUAL}$0
+}
+endsnippet
+
+snippet switch "switch statement" b
+switch (${1:cond})
+{
+	case ${2:value}:
+		${VISUAL}$0
+		break;
+}
+endsnippet
+
+snippet case "case" b
+case ${1:value}:
+	${VISUAL}$0
+	break;
+endsnippet
+
+
+snippet default "case" b
+default:
+	${VISUAL}$0
+	break;
+endsnippet
+
+
+snippet using "using statement" b
+using (${1:resource})
+{
+	${VISUAL}$0
+}
+endsnippet
+
+snippet unchecked "unchecked block" b
+unchecked
+{
+	${VISUAL}$0
+}
+endsnippet
+
+snippet checked "checked block" b
+checked
+{
+	${VISUAL}$0
+}
+endsnippet
+
+snippet unsafe "unsafe" b
+unsafe
+{
+	${VISUAL}$0
+}
+endsnippet
+
+
+snippet try "try catch block" b
+try
+{
+	${VISUAL}$0
+}
+catch (${1:Exception} ${2:e})
+{
+	throw;
+}
+endsnippet
+
+snippet tryf "try finally block" b
+try
+{
+	${VISUAL}$0
+}
+finally
+{
+}
+endsnippet
+
+snippet throw "throw"
+throw new ${1}Exception("${2}");
+endsnippet
