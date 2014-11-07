@@ -49,7 +49,7 @@ set hidden
 set number
 set cmdheight=2
 set laststatus=2
-set nohlsearch
+set hlsearch
 set incsearch
 set ignorecase
 set smartcase
@@ -238,7 +238,7 @@ noremap <silent> <C-F4> :Bdelete<CR>
 
 " Function keys {{{2
 nnoremap <silent> <F2> :Tagbar<CR>
-nnoremap <silent> <F3> :set hlsearch!<CR>
+nnoremap <silent> <F3> :nohlsearch<CR>
 nnoremap <silent> <F4> :GundoToggle<CR>
 "nnoremap <silent> <F5> :LookupFile<CR> " this is the default
 nnoremap <silent> <F8> :YRShow<CR>
