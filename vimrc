@@ -68,6 +68,7 @@ let g:LookupFile_smartcase=1
 let g:LookupFile_SearchForBufsInTabs=1
 let g:LookupFile_UsingSpecializedTag=1
 let g:LookupFile_TagExpr=string('./filenametags')
+let g:gundo_close_on_revert=1
 
 if has('win32')
   let g:tagbar_ctags_bin='d:\tools\ctags58\ctags.exe'
@@ -169,8 +170,9 @@ noremap <silent>    <C-F6>        :bnext<CR>
 noremap <silent>    <C-F4>        :Bdelete<CR>
 nnoremap <silent>   <Leader>q     :Bdelete<CR>
 nnoremap <silent>   <Leader>bd    :Bdelete<CR>
-nnoremap <silent>   <F8>          :Tagbar<CR>
-nnoremap <silent>   <F9>          :YRShow<CR>
+nnoremap <silent>   <F2>          :Tagbar<CR>
+nnoremap <silent>   <F3>          :YRShow<CR>
+nnoremap <silent>   <F4>          :GundoToggle<CR>
 nnoremap <silent>   <Leader>a     :A<CR>
 
 cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<cr>
