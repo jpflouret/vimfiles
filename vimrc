@@ -187,8 +187,18 @@ endif
 
 " Show the fold text first before the number of lines {{{2
 function! GetFoldText()
+  let w = &textwidth
+  if w <= 0
+    w = 78
+  endif
   let foldsize=v:foldend-v:foldstart
-  return getline(v:foldstart).'  [... '.foldsize.' more lines]'
+  let text=getline(v:foldstart)
+  let follow=' ['.foldsize.' lines]'
+  let padlen=w-(strlen(text)+strlen(follow))
+  if (padlen<0)
+    let padlen = 0
+  endif
+  return text . repeat(' ', padlen) . follow
 endfunction
 
 
