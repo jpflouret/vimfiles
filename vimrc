@@ -74,6 +74,10 @@ if has('win32')
   let g:tagbar_ctags_bin='d:\tools\ctags58\ctags.exe'
 endif
 
+if has('unix')
+  let g:netrw_browsex_viewer='gnome-open'
+endif
+
 " To make the powerline look good, install fonts from
 " https://github.com/Lokaltog/powerline-fonts/
 " or the patched windows fonts from
