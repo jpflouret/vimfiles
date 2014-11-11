@@ -6,7 +6,7 @@
 	url = https://github.com/jpflouret/vimp4python.git
 [submodule "bundle/vim-commentary"]
 	path = bundle/vim-commentary
-	url = https://github.com/jpflouret/vim-commentary.git
+	url = https://github.com/tpope/vim-commentary.git
 [submodule "bundle/vim-unimpaired"]
 	path = bundle/vim-unimpaired
 	url = https://github.com/tpope/vim-unimpaired.git
