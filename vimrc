@@ -322,6 +322,9 @@ if has('autocmd')
     " Use C++ style comments in C++
     autocmd FileType c,cpp let b:commentary_format="//%s"
 
+    " Set tw=78 on Markdown files
+    autocmd FileType markdown setlocal tw=78
+
     " Auto open qf window after grep
     autocmd QuickFixCmdPost [^l]*grep*  cwindow
     autocmd QuickFixCmdPost l*grep*     lwindow
