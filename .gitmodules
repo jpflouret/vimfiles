@@ -99,7 +99,7 @@
 	url = https://github.com/vim-scripts/genutils.git
 [submodule "bundle/alternate"]
 	path = bundle/alternate
-	url = https://github.com/vim-scripts/a.vim.git
+	url = https://github.com/nacitar/a.vim.git
 [submodule "bundle/tabular"]
 	path = bundle/tabular
 	url = https://github.com/godlygeek/tabular.git
