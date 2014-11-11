@@ -82,7 +82,7 @@ let g:LookupFile_AllowNewFiles=0
 let g:LookupFile_smartcase=1
 let g:LookupFile_SearchForBufsInTabs=1
 let g:LookupFile_UsingSpecializedTag=1
-let g:LookupFile_TagExpr=string('./filenametags')
+let g:LookupFile_TagExpr='findfile("filenametags", ",;")'
 let g:gundo_close_on_revert=1
 
 if has('win32')
