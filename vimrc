@@ -320,7 +320,7 @@ if has('autocmd')
     autocmd FileType * setlocal formatoptions-=o
 
     " Use C++ style comments in C++
-    autocmd FileType c,cpp setlocal commentstring=//%s
+    autocmd FileType c,cpp let b:commentary_format="//%s"
 
     " Auto open qf window after grep
     autocmd QuickFixCmdPost [^l]*grep*  cwindow
