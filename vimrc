@@ -1,9 +1,13 @@
 set nocompatible
-execute pathogen#infect()
+if has('eval')
+  execute pathogen#infect()
+endif
 
 " Colorscheme {{{1
-set background=dark
-colorscheme hybrid
+if has('syntax')
+  set background=dark
+  colorscheme hybrid
+endif
 
 
 " GUI and font settings {{{1
@@ -42,7 +46,9 @@ set shiftwidth=4
 set expandtab
 set list
 set listchars=tab:»\ ,trail:·,eol:¬,extends:>,precedes:<,nbsp:+
-set mouse=nvc
+if has('mouse')
+  set mouse=nvc
+endif
 set mousehide
 set shortmess=a
 set hidden
@@ -67,44 +73,47 @@ set textwidth=120
 set nowildmenu
 
 " Plugin configuration {{{1
-let c_space_errors=1
-let g:yankring_replace_n_pkey='<Leader>.'
-let g:yankring_replace_n_nkey='<Leader>,'
-let g:yankring_persist=0 "disabled for privacy
-let g:airline#extensions#tabline#enabled=1
-let g:ctrlp_root_markers=['.p4config', '.clang-format', '.project']
-let g:SuperTabMappingForward='<C-SPACE>'
-let g:SuperTabMappingBackward='<S-C-SPACE>'
-let g:LookupFile_DisableDefaultMap=0
-let g:LookupFile_EnableRemapCmd=0
-let g:LookupFile_PreserveLastPattern=0
-let g:LookupFile_AllowNewFiles=0
-let g:LookupFile_smartcase=1
-let g:LookupFile_SearchForBufsInTabs=1
-let g:LookupFile_UsingSpecializedTag=1
-let g:LookupFile_TagExpr='findfile("filenametags", ",;")'
-let g:gundo_close_on_revert=1
+if has('eval')
+  let c_space_errors=1
+  let g:yankring_replace_n_pkey='<Leader>.'
+  let g:yankring_replace_n_nkey='<Leader>,'
+  let g:yankring_persist=0 "disabled for privacy
+  let g:airline#extensions#tabline#enabled=1
+  let g:ctrlp_root_markers=['.p4config', '.clang-format', '.project']
+  let g:SuperTabMappingForward='<C-SPACE>'
+  let g:SuperTabMappingBackward='<S-C-SPACE>'
+  let g:LookupFile_DisableDefaultMap=0
+  let g:LookupFile_EnableRemapCmd=0
+  let g:LookupFile_PreserveLastPattern=0
+  let g:LookupFile_AllowNewFiles=0
+  let g:LookupFile_smartcase=1
+  let g:LookupFile_SearchForBufsInTabs=1
+  let g:LookupFile_UsingSpecializedTag=1
+  let g:LookupFile_TagExpr='findfile("filenametags", ",;")'
+  let g:gundo_close_on_revert=1
 
-if has('win32')
-  let g:tagbar_ctags_bin='d:\tools\ctags58\ctags.exe'
-endif
-
-if has('unix')
-  let g:netrw_browsex_viewer='gnome-open'
-endif
-
-if has('gui_running')
-  let g:airline_powerline_fonts=(&guifont =~ 'Powerline')
-else
-  if !(&term == 'linux')
-    " This assumes that the terminal is configured with the proper powerline fonts
-    " This would need to be set in the terminal emulator or in the default system font
-    let g:airline_powerline_fonts=1
+  if has('win32')
+    let g:tagbar_ctags_bin='d:\tools\ctags58\ctags.exe'
   endif
+
+  if has('unix')
+    let g:netrw_browsex_viewer='gnome-open'
+  endif
+
+  if has('gui_running')
+    let g:airline_powerline_fonts=(&guifont =~ 'Powerline')
+  else
+    if !(&term == 'linux')
+      " This assumes that the terminal is configured with the proper powerline fonts
+      " This would need to be set in the terminal emulator or in the default system font
+      let g:airline_powerline_fonts=1
+    endif
+  endif
+
 endif
 
 " Syntax and file type detection {{{1
-if &t_Co > 2 || has('gui_running')
+if has('syntax') && (&t_Co > 2 || has('gui_running'))
   syntax on
 endif
 if has('autocmd')
@@ -113,70 +122,84 @@ endif
 
 " Auxiliary functions {{{1
 " Delete an empty line also when hitting delete {{{2
-nnoremap <silent> <DEL> :call <SID>DeleteOrDeleteLine()<CR>
-function! <SID>DeleteOrDeleteLine()
-  if getline('.') =~ '^$'
-    delete _
-  else
-    execute 'normal! \<DEL>'
-  endif
-endfunction
+if has('eval')
+  nnoremap <silent> <DEL> :call <SID>DeleteOrDeleteLine()<CR>
+  function! <SID>DeleteOrDeleteLine()
+    if getline('.') =~ '^$'
+      delete _
+    else
+      execute 'normal! \<DEL>'
+    endif
+  endfunction
+endif
 
 
 " Deletes a line above the current line if it is empty {{{2
-" function! <SID>DeleteEmptyLineAbove()
-"   let lineAbove = line('.')-1
-"   if getline(lineAbove) =~ '^\s*$'
-"     exe lineAbove . ' delete _'
-"   endif
-" endfunction
+" if has('eval')
+"   function! <SID>DeleteEmptyLineAbove()
+"     let lineAbove = line('.')-1
+"     if getline(lineAbove) =~ '^\s*$'
+"       exe lineAbove . ' delete _'
+"     endif
+"   endfunction
+" endif
 
 
 " Cleans up all trailing whitespace and retabs the file {{{2
-command! Cleanup call <SID>CleanupFile()
-function! <SID>CleanupFile()
-  %s/\s\+$//ge
-  retab
-endfunction
+if has('eval')
+  command! Cleanup call <SID>CleanupFile()
+  function! <SID>CleanupFile()
+    %s/\s\+$//ge
+    retab
+  endfunction
+endif
 
 
 " Show syntax highlight stack {{{2
-command! SynStack call <SID>SynStack()
-function! <SID>SynStack()
-  if !exists('*synstack')
-    return
-  endif
-  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
-endfunc
+if has('eval')
+  command! SynStack call <SID>SynStack()
+  function! <SID>SynStack()
+    if !exists('*synstack')
+      return
+    endif
+    echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+  endfunction
+endif
 
 
 " Populate the argslist from the qflist {{{2
-command! -nargs=0 -bar Qargs execute 'args' QuickfixFilenames()
-function! QuickfixFilenames()
-  " Building a hash ensures we get each buffer only once
-  let buffer_numbers = {}
-  for quickfix_item in getqflist()
-    let buffer_numbers[quickfix_item['bufnr']] = bufname(quickfix_item['bufnr'])
-  endfor
-  return join(map(values(buffer_numbers), 'fnameescape(v:val)'))
-endfunction
+if has('eval')
+  command! -nargs=0 -bar Qargs execute 'args' QuickfixFilenames()
+  function! QuickfixFilenames()
+    " Building a hash ensures we get each buffer only once
+    let buffer_numbers = {}
+    for quickfix_item in getqflist()
+      let buffer_numbers[quickfix_item['bufnr']] = bufname(quickfix_item['bufnr'])
+    endfor
+    return join(map(values(buffer_numbers), 'fnameescape(v:val)'))
+  endfunction
+endif
 
 
 " Visual star search from vimcasts.org {{{2
-function! s:VSetSearch(cmdtype)
-  let temp = @s
-  norm! gv"sy
-  let @/ = '\V' . substitute(escape(@s, a:cmdtype.'\'), '\n', '\\n', 'g')
-  let @s = temp
-endfunction
-xnoremap * :<C-u>call <SID>VSetSearch('/')<CR>/<C-R>=@/<CR><CR>
-xnoremap # :<C-u>call <SID>VSetSearch('?')<CR>?<C-R>=@/<CR><CR>
+if has('eval')
+  function! s:VSetSearch(cmdtype)
+    let temp = @s
+    norm! gv"sy
+    let @/ = '\V' . substitute(escape(@s, a:cmdtype.'\'), '\n', '\\n', 'g')
+    let @s = temp
+  endfunction
+  xnoremap * :<C-u>call <SID>VSetSearch('/')<CR>/<C-R>=@/<CR><CR>
+  xnoremap # :<C-u>call <SID>VSetSearch('?')<CR>?<C-R>=@/<CR><CR>
+endif
 
 
 " Folding configuration {{{1
 " Fold options {{{2
-set foldcolumn=3
-set foldtext=GetFoldText()
+if has('eval') && has('folding')
+  set foldcolumn=3
+  set foldtext=GetFoldText()
+endif
 
 " Enable syntax folding for c++ and python {{{2
 if has('autocmd')
@@ -186,20 +209,22 @@ if has('autocmd')
 endif
 
 " Show the fold text first before the number of lines {{{2
-function! GetFoldText()
-  let w = &textwidth
-  if w <= 0
-    let w = winwidth(0) - &numberwidth - &foldcolumn
-  endif
-  let foldsize=v:foldend-v:foldstart
-  let text=getline(v:foldstart)
-  let follow=' ['.foldsize.' lines]'
-  let padlen=w-(strlen(text)+strlen(follow))
-  if (padlen<0)
-    let padlen = 0
-  endif
-  return text . repeat(' ', padlen) . follow
-endfunction
+if has('eval') && has('folding')
+  function! GetFoldText()
+    let w = &textwidth
+    if w <= 0
+      let w = winwidth(0) - &numberwidth - &foldcolumn
+    endif
+    let foldsize=v:foldend-v:foldstart
+    let text=getline(v:foldstart)
+    let follow=' ['.foldsize.' lines]'
+    let padlen=w-(strlen(text)+strlen(follow))
+    if (padlen<0)
+      let padlen = 0
+    endif
+    return text . repeat(' ', padlen) . follow
+  endfunction
+endif
 
 
 " Configure grep to be qgrep {{{1
@@ -297,7 +322,7 @@ vmap <S-Up> [egv
 vmap <S-Down> ]egv
 
 " clang-format {{{2
-if (has('unix'))
+if has('unix') && has('python')
   "Mappings for clang-format-3.5 under ubuntu....
   map  <silent> <C-K> :pyf      /usr/share/vim/addons/syntax/clang-format-3.5.py<CR>
   imap <silent> <C-K> <ESC>:pyf /usr/share/vim/addons/syntax/clang-format-3.5.py<CR>i
