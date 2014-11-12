@@ -6,7 +6,12 @@ endif
 " Colorscheme {{{1
 if has('syntax')
   set background=dark
-  colorscheme hybrid
+  " Only use hybrid on the gui
+  if has('gui_running')
+    colorscheme hybrid
+  else
+    colorscheme torte
+  endif
 endif
 
 
