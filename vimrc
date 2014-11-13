@@ -80,9 +80,6 @@ set nowildmenu
 " Plugin configuration {{{1
 if has('eval')
   let c_space_errors=1
-  let g:yankring_replace_n_pkey='<Leader>.'
-  let g:yankring_replace_n_nkey='<Leader>,'
-  let g:yankring_persist=0 "disabled for privacy
   let g:airline#extensions#tabline#enabled=1
   let g:ctrlp_root_markers=['.p4config', '.clang-format', '.project']
   let g:SuperTabMappingForward='<C-SPACE>'
@@ -261,7 +258,6 @@ nnoremap <silent> <F2> :Tagbar<CR>
 nnoremap <silent> <F3> :nohlsearch<CR>
 nnoremap <silent> <F4> :GundoToggle<CR>
 "nnoremap <silent> <F5> :LookupFile<CR> " this is the default
-nnoremap <silent> <F8> :YRShow<CR>
 
 " Control-Backspace deletes a word {{{2
 inoremap <C-BS> <C-W>
