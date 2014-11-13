@@ -366,6 +366,9 @@ if has('autocmd')
 
     " Auto cleanup of vim-fugitive buffers
     autocmd BufReadPost fugitive://* set bufhidden=delete
+
+    " Change directory to file path for each buffer
+    autocmd BufEnter,BufReadPost * silent! lcd %:p:h
   augroup END
 end
 "}}}
