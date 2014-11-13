@@ -90,8 +90,5 @@ This repository is intended to be cloned into the user's Vim runtime folder
 * Python 2.4+
 
 ## License
-Each plugin comes with its own license. See bundle/`<plugin>`/README or bundle/`<plugin>`/LICENSE
-for individual plugin licenses.
 
-Copyright (c) JP Flouret. Distributed under the same terms as Vim itself.
-See :help license.
+See LICENSE.md
