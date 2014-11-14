@@ -206,8 +206,11 @@ endif
 
 " Enable syntax folding for c++ and python {{{2
 if has('autocmd')
-  autocmd Syntax python setlocal foldmethod=indent
-  autocmd Syntax c,cpp setlocal foldmethod=syntax
+  augroup vimrc_fold
+    autocmd!
+    autocmd Syntax python setlocal foldmethod=indent
+    autocmd Syntax c,cpp setlocal foldmethod=syntax
+  augroup END
 endif
 
 " Show the fold text first before the number of lines {{{2
@@ -369,6 +372,9 @@ if has('autocmd')
 
     " Change directory to file path for each buffer
     autocmd BufEnter,BufReadPost * silent! lcd %:p:h
+
+    " Set .md files to ft=markdown
+    autocmd BufNewFile,BufRead *.md set filetype=markdown
   augroup END
 end
 "}}}
