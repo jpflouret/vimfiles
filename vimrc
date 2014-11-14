@@ -10,7 +10,7 @@ if has('syntax')
   if has('gui_running')
     colorscheme hybrid
   else
-    colorscheme torte
+    colorscheme solarized
   endif
 endif
 
@@ -201,13 +201,13 @@ endif
 if has('eval') && has('folding')
   set foldcolumn=3
   set foldtext=GetFoldText()
+  set foldlevelstart=99
 endif
 
 " Enable syntax folding for c++ and python {{{2
 if has('autocmd')
   autocmd Syntax python setlocal foldmethod=indent
   autocmd Syntax c,cpp setlocal foldmethod=syntax
-  autocmd Syntax c,cpp,python normal zR
 endif
 
 " Show the fold text first before the number of lines {{{2
