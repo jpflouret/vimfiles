@@ -112,3 +112,6 @@
 [submodule "bundle/vim-tbone"]
 	path = bundle/vim-tbone
 	url = https://github.com/tpope/vim-tbone.git
+[submodule "bundle/vim-signature"]
+	path = bundle/vim-signature
+	url = https://github.com/kshenoy/vim-signature.git
