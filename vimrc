@@ -284,14 +284,14 @@ nnoremap <silent> <C-Left> <C-W>h
 nnoremap <silent> <C-Right> <C-W>l
 
 " Disable the arrows so you learn vim the hard way {{{2
-inoremap           <Up>          <NOP>
-inoremap           <Down>        <NOP>
-inoremap           <Left>        <NOP>
-inoremap           <Right>       <NOP>
-noremap            <Up>          <NOP>
-noremap            <Down>        <NOP>
-noremap            <Left>        <NOP>
-noremap            <Right>       <NOP>
+"inoremap           <Up>          <NOP>
+"inoremap           <Down>        <NOP>
+"inoremap           <Left>        <NOP>
+"inoremap           <Right>       <NOP>
+"noremap            <Up>          <NOP>
+"noremap            <Down>        <NOP>
+"noremap            <Left>        <NOP>
+"noremap            <Right>       <NOP>
 
 
 " cscope mappings {{{2
