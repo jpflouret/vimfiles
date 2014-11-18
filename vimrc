@@ -82,8 +82,6 @@ if has('eval')
   let c_space_errors=1
   let g:airline#extensions#tabline#enabled=1
   let g:ctrlp_root_markers=['.p4config', '.clang-format', '.project']
-  let g:SuperTabMappingForward='<C-SPACE>'
-  let g:SuperTabMappingBackward='<S-C-SPACE>'
   let g:LookupFile_DisableDefaultMap=0
   let g:LookupFile_EnableRemapCmd=0
   let g:LookupFile_PreserveLastPattern=0
