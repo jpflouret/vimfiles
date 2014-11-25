@@ -288,26 +288,26 @@ nnoremap <silent> <C-Right> <C-W>l
 
 
 " cscope mappings {{{2
-nmap <C-\>s :cs find s <C-R>=expand('<cword>')<CR><CR>
-nmap <C-\>g :cs find g <C-R>=expand('<cword>')<CR><CR>
-nmap <C-\>c :cs find c <C-R>=expand('<cword>')<CR><CR>
-nmap <C-\>t :cs find t <C-R>=expand('<cword>')<CR><CR>
-nmap <C-\>e :cs find e <C-R>=expand('<cword>')<CR><CR>
-nmap <C-\>f :cs find f <C-R>=expand('<cfile>')<CR><CR>
-nmap <C-\>i :cs find i ^<C-R>=expand('<cfile>')<CR>$<CR>
-nmap <C-\>d :cs find d <C-R>=expand('<cword>')<CR><CR>
+" nmap <C-\>s :cs find s <C-R>=expand('<cword>')<CR><CR>
+" nmap <C-\>g :cs find g <C-R>=expand('<cword>')<CR><CR>
+" nmap <C-\>c :cs find c <C-R>=expand('<cword>')<CR><CR>
+" nmap <C-\>t :cs find t <C-R>=expand('<cword>')<CR><CR>
+" nmap <C-\>e :cs find e <C-R>=expand('<cword>')<CR><CR>
+" nmap <C-\>f :cs find f <C-R>=expand('<cfile>')<CR><CR>
+" nmap <C-\>i :cs find i ^<C-R>=expand('<cfile>')<CR>$<CR>
+" nmap <C-\>d :cs find d <C-R>=expand('<cword>')<CR><CR>
 
 " Using 'CTRL-spacebar' then a search type makes the vim window
 " split horizontally, with search result displayed in
 " the new window.
-nmap <C-Space>s :scs find s <C-R>=expand('<cword>')<CR><CR>
-nmap <C-Space>g :scs find g <C-R>=expand('<cword>')<CR><CR>
-nmap <C-Space>c :scs find c <C-R>=expand('<cword>')<CR><CR>
-nmap <C-Space>t :scs find t <C-R>=expand('<cword>')<CR><CR>
-nmap <C-Space>e :scs find e <C-R>=expand('<cword>')<CR><CR>
-nmap <C-Space>f :scs find f <C-R>=expand('<cfile>')<CR><CR>
-nmap <C-Space>i :scs find i ^<C-R>=expand('<cfile>')<CR>$<CR>
-nmap <C-Space>d :scs find d <C-R>=expand('<cword>')<CR><CR>
+" nmap <C-Space>s :scs find s <C-R>=expand('<cword>')<CR><CR>
+" nmap <C-Space>g :scs find g <C-R>=expand('<cword>')<CR><CR>
+" nmap <C-Space>c :scs find c <C-R>=expand('<cword>')<CR><CR>
+" nmap <C-Space>t :scs find t <C-R>=expand('<cword>')<CR><CR>
+" nmap <C-Space>e :scs find e <C-R>=expand('<cword>')<CR><CR>
+" nmap <C-Space>f :scs find f <C-R>=expand('<cfile>')<CR><CR>
+" nmap <C-Space>i :scs find i ^<C-R>=expand('<cfile>')<CR>$<CR>
+" nmap <C-Space>d :scs find d <C-R>=expand('<cword>')<CR><CR>
 
 
 " Text bubbling {{{2
