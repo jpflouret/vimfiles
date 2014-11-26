@@ -259,6 +259,14 @@ nnoremap <silent> <F4> :GundoToggle<CR>
 inoremap <C-BS> <C-W>
 cnoremap <C-BS> <C-W>
 
+" Control-Space does the same as C-N
+noremap  <silent> <Nul>     <Nop>
+inoremap <silent> <Nul>     <C-N>
+vnoremap <silent> <Nul>     <Nop>
+cnoremap <silent> <Nul>     <Nop>
+nnoremap <silent> <Nul>     <Nop>
+inoremap <silent> <C-Space> <C-N>
+
 " Open files with path relative to current file {{{2
 cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<cr>
 map <leader>ew :e %%
