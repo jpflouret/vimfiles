@@ -86,6 +86,7 @@ if has('eval')
   let g:LookupFile_UsingSpecializedTag=1
   let g:LookupFile_TagExpr='findfile("filenametags", ",;")'
   let g:gundo_close_on_revert=1
+  let g:UltiSnipsNoPythonWarning=1
 
   if has('win32')
     let g:tagbar_ctags_bin='d:\tools\ctags58\ctags.exe'
