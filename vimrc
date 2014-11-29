@@ -373,7 +373,7 @@ if has('autocmd')
     autocmd BufReadPost fugitive://* set bufhidden=delete
 
     " Change directory to file path for each buffer
-    autocmd BufEnter,BufReadPost * silent! lcd %:p:h
+    " autocmd BufEnter,BufReadPost * silent! lcd %:p:h
 
     " Set .md files to ft=markdown
     autocmd BufNewFile,BufRead *.md set filetype=markdown
