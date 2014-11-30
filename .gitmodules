@@ -115,3 +115,6 @@
 [submodule "bundle/AfterColors.vim"]
 	path = bundle/AfterColors.vim
 	url = https://github.com/vim-scripts/AfterColors.vim.git
+[submodule "bundle/vdebug"]
+	path = bundle/vdebug
+	url = https://github.com/joonty/vdebug.git

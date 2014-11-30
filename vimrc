@@ -254,7 +254,8 @@ noremap <silent> <C-F4> :Bdelete<CR>
 nnoremap <silent> <F2> :Tagbar<CR>
 nnoremap <silent> <F3> :nohlsearch<CR>
 nnoremap <silent> <F4> :GundoToggle<CR>
-"nnoremap <silent> <F5> :LookupFile<CR> " this is the default
+" nnoremap <silent> <F5> <VDebug>
+nnoremap <silent> <F6> :LookupFile<CR>
 
 " Control-Backspace deletes a word {{{2
 inoremap <C-BS> <C-W>
