@@ -34,6 +34,7 @@ endif
 
 " Run vim-sensible now so that we can override the settings {{{1
 runtime! plugin/sensible.vim
+runtime! macros/editexisting.vim
 
 " Options {{{1
 scriptencoding utf-8
@@ -117,30 +118,6 @@ if has('autocmd')
 endif
 
 " Auxiliary functions {{{1
-" Delete an empty line also when hitting delete {{{2
-if has('eval')
-  nnoremap <silent> <DEL> :call <SID>DeleteOrDeleteLine()<CR>
-  function! <SID>DeleteOrDeleteLine()
-    if getline('.') =~ '^$'
-      delete _
-    else
-      execute 'normal! \<DEL>'
-    endif
-  endfunction
-endif
-
-
-" Deletes a line above the current line if it is empty {{{2
-" if has('eval')
-"   function! <SID>DeleteEmptyLineAbove()
-"     let lineAbove = line('.')-1
-"     if getline(lineAbove) =~ '^\s*$'
-"       exe lineAbove . ' delete _'
-"     endif
-"   endfunction
-" endif
-
-
 " Cleans up all trailing whitespace and retabs the file {{{2
 if has('eval')
   command! Cleanup call <SID>CleanupFile()
@@ -187,6 +164,16 @@ if has('eval')
   endfunction
   xnoremap * :<C-u>call <SID>VSetSearch('/')<CR>/<C-R>=@/<CR><CR>
   xnoremap # :<C-u>call <SID>VSetSearch('?')<CR>?<C-R>=@/<CR><CR>
+endif
+
+
+" From vimrc_example.vim
+" Convenient command to see the difference between the current buffer and the
+" file it was loaded from, thus the changes you made.
+" Only define it when not defined already.
+if has('eval') && !exists(":DiffOrig")
+  command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis
+        \ | wincmd p | diffthis
 endif
 
 
@@ -354,8 +341,14 @@ if has('autocmd')
     " Use C++ style comments in C++
     autocmd FileType c,cpp let b:commentary_format="//%s"
 
-    " Set tw=78 on Markdown files
-    autocmd FileType markdown setlocal tw=78
+    " Set tw=78 on text files
+    autocmd FileType markdown,text setlocal tw=78 spell
+
+    " Git commit tw=72
+    autocmd FileType gitcommit setlocal textwidth=72 spell
+
+    " K looks up help in .vim files instead of running man
+    autocmd FileType vim  nmap K :help <c-r><c-w><cr>
 
     " Auto open qf window after grep
     autocmd QuickFixCmdPost [^l]*grep*  cwindow
@@ -366,10 +359,6 @@ if has('autocmd')
           \ if line("'\"") > 1 && line("'\"") <= line("$") |
           \   exe "normal! g`\"" |
           \ endif
-
-    " K looks up help in .vim files instead of running man
-    autocmd FileType vim  nmap K  :help <c-r><c-w><cr>
-
     " Auto cleanup of vim-fugitive buffers
     autocmd BufReadPost fugitive://* set bufhidden=delete
 
