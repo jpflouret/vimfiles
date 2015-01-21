@@ -70,7 +70,7 @@ set backspace=indent,eol,start
 set nospell
 set diffopt=filler,vertical
 set colorcolumn=+1
-set textwidth=120
+" set textwidth=120
 set nowildmenu
 
 " Plugin configuration {{{1
@@ -342,7 +342,7 @@ if has('autocmd')
     autocmd FileType c,cpp let b:commentary_format="//%s"
 
     " Set tw=78 on text files
-    autocmd FileType markdown,text setlocal tw=78 spell
+    autocmd FileType markdown setlocal tw=78 spell
 
     " Git commit tw=72
     autocmd FileType gitcommit setlocal textwidth=72 spell
