@@ -34,7 +34,11 @@ endif
 
 " Run vim-sensible now so that we can override the settings {{{1
 runtime! plugin/sensible.vim
-runtime! macros/editexisting.vim
+
+if !exists('g:loaded_editexisting')
+  let g:loaded_editexisting = 1
+  runtime! macros/editexisting.vim
+endif
 
 " Options {{{1
 scriptencoding utf-8
@@ -88,10 +92,6 @@ if has('eval')
   let g:LookupFile_TagExpr='findfile("filenametags", ",;")'
   let g:gundo_close_on_revert=1
   let g:UltiSnipsNoPythonWarning=1
-
-  if has('win32')
-    let g:tagbar_ctags_bin='d:\tools\ctags58\ctags.exe'
-  endif
 
   if has('unix')
     let g:netrw_browsex_viewer='gnome-open'
@@ -213,14 +213,6 @@ if has('eval') && has('folding')
 endif
 
 
-" Configure grep to be qgrep {{{1
-if has('win32') " I don't have qgrep working on linux yet
-  set grepprg=qgrep
-  command! -nargs=1 Qgrep :execute 'silent grep! search '.g:QGREP_PROJ.' '.<q-args>
-  nnoremap <silent>   <Leader>g     :Qgrep <cword><CR>
-endif
-
-
 " Key mappings {{{1
 " Manipulate .vimrc {{{2
 nnoremap <silent> <Leader>v :e $MYVIMRC<CR>
@@ -321,19 +313,14 @@ if has('unix') && has('python')
   map  <silent> <C-K> :pyf      /usr/share/vim/addons/syntax/clang-format-3.5.py<CR>
   imap <silent> <C-K> <ESC>:pyf /usr/share/vim/addons/syntax/clang-format-3.5.py<CR>i
 else
-  map  <silent> <C-K> :pyf      d:/tools/clang-format.py<CR>
-  imap <silent> <C-K> <ESC>:pyf d:/tools/clang-format.py<CR>i
+  map  <silent> <C-K> :pyf      C:\Program\ Files\ (x86)\LLVM\share\clang\clang-format.py<CR>
+  imap <silent> <C-K> <ESC>:pyf C:\Program\ Files\ (x86)\LLVM\share\clang\clang-format.py<CR>i
 endif
 
 " Auto commands {{{1
 if has('autocmd')
   augroup vimrc
     autocmd!
-
-    " Maximize the window on Windows
-    if (has('win32'))
-      autocmd GUIEnter * simalt ~x
-    endif
 
     " Change formatoptions regardless of filetype
     autocmd FileType * setlocal formatoptions-=o
@@ -359,11 +346,12 @@ if has('autocmd')
           \ if line("'\"") > 1 && line("'\"") <= line("$") |
           \   exe "normal! g`\"" |
           \ endif
+
     " Auto cleanup of vim-fugitive buffers
     autocmd BufReadPost fugitive://* set bufhidden=delete
 
     " Change directory to file path for each buffer
-    " autocmd BufEnter,BufReadPost * silent! lcd %:p:h
+    autocmd BufEnter,BufReadPost * silent! lcd %:p:h
 
     " Set .md files to ft=markdown
     autocmd BufNewFile,BufRead *.md set filetype=markdown
