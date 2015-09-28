@@ -1,12 +1,12 @@
 set nocompatible
 if has('eval')
-  execute pathogen#infect()
+  silent! execute pathogen#infect()
 endif
 
 " Colorscheme {{{1
 if has('syntax')
   set background=dark
-  colorscheme hybrid
+  silent! colorscheme hybrid
 endif
 
 
