@@ -16,7 +16,6 @@ if !exists('gui_initialized')
   let gui_initialized=0
 endif
 if has('gui_running') && !gui_initialized
-  set lines=60 columns=200
   set guioptions=aAcemg
   let gui_initialized=1
 endif
@@ -41,6 +40,7 @@ if !exists('g:loaded_editexisting')
 endif
 
 " Options {{{1
+set sessionoptions+=resize,winpos
 scriptencoding utf-8
 set encoding=utf-8
 set autoread
@@ -355,6 +355,10 @@ if has('autocmd')
 
     " Set .md files to ft=markdown
     autocmd BufNewFile,BufRead *.md set filetype=markdown
+
+    autocmd VIMEnter * :source ~/session.vim
+    autocmd VIMLeave * :mksession! ~/session.vim
+
   augroup END
 end
 "}}}
