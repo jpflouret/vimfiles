@@ -366,4 +366,13 @@ if has('autocmd')
 end
 "}}}
 
-" vim:ts=2:sw=2:tw=100:et:fdm=marker:fdc=3:
+" Load local config file {{{1
+if has('eval')
+  let s:vimrc_local = expand("<sfile>:p:r")."_local"
+  if filereadable(s:vimrc_local)
+    exe "source " . fnameescape(s:vimrc_local)
+  endif
+endif
+"}}}
+
+" vim:ts=2:sw=2:tw=100:et:fdm=marker:fdc=3:ft=vim:
