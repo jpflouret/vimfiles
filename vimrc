@@ -358,8 +358,9 @@ if has('autocmd')
     " Set .md files to ft=markdown
     autocmd BufNewFile,BufRead *.md set filetype=markdown
 
-    autocmd VIMEnter * :silent! source ~/.session.vim
-    autocmd VIMLeave * :mksession! ~/.session.vim
+    " Automatically create a session to save window position
+    " autocmd VIMEnter * :silent! source ~/.session.vim
+    " autocmd VIMLeave * :mksession! ~/.session.vim
 
   augroup END
 end
