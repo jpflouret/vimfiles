@@ -337,6 +337,8 @@ if has('autocmd')
     " K looks up help in .vim files instead of running man
     autocmd FileType vim  nmap K :help <c-r><c-w><cr>
 
+    autocmd FileType bindzone setlocal ts=8 sw=8
+
     " Auto open qf window after grep
     autocmd QuickFixCmdPost [^l]*grep*  cwindow
     autocmd QuickFixCmdPost l*grep*     lwindow
