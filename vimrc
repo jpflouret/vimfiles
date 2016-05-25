@@ -34,10 +34,10 @@ endif
 " Run vim-sensible now so that we can override the settings {{{1
 runtime! plugin/sensible.vim
 
-if !exists('g:loaded_editexisting')
-  let g:loaded_editexisting = 1
-  runtime! macros/editexisting.vim
-endif
+" if !exists('g:loaded_editexisting')
+"   let g:loaded_editexisting = 1
+"   runtime! macros/editexisting.vim
+" endif
 
 " Options {{{1
 set sessionoptions+=resize,winpos
@@ -371,6 +371,12 @@ if has('eval')
   let s:vimrc_local = expand("<sfile>:p:r")."_local"
   if filereadable(s:vimrc_local)
     exe "source " . fnameescape(s:vimrc_local)
+  endif
+  if has('gui_running')
+    let s:vimrc_local_gui = expand("<sfile>:p:r")."_local_gui"
+    if filereadable(s:vimrc_local_gui)
+      exe "source " . fnameescape(s:vimrc_local_gui)
+    endif
   endif
 endif
 "}}}
