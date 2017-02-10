@@ -310,8 +310,8 @@ vmap <S-Down> ]egv
 " clang-format {{{2
 if has('unix') && has('python')
   "Mappings for clang-format-3.5 under ubuntu....
-  map  <silent> <C-K> :pyf      /usr/share/vim/addons/syntax/clang-format-3.5.py<CR>
-  imap <silent> <C-K> <ESC>:pyf /usr/share/vim/addons/syntax/clang-format-3.5.py<CR>i
+  map  <silent> <C-K> :pyf      /usr/share/vim/addons/syntax/clang-format-3.8.py<CR>
+  imap <silent> <C-K> <ESC>:pyf /usr/share/vim/addons/syntax/clang-format-3.8.py<CR>i
 else
   map  <silent> <C-K> :pyf      C:\Program\ Files\ (x86)\LLVM\share\clang\clang-format.py<CR>
   imap <silent> <C-K> <ESC>:pyf C:\Program\ Files\ (x86)\LLVM\share\clang\clang-format.py<CR>i
