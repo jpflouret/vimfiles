@@ -6,7 +6,7 @@ endif
 " Colorscheme {{{1
 if has('syntax')
   set background=dark
-  silent! colorscheme hybrid
+  "silent! colorscheme hybrid
 endif
 
 
