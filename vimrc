@@ -58,7 +58,7 @@ set mousehide
 set shortmess=a
 set hidden
 set number
-set cmdheight=2
+set cmdheight=1
 set laststatus=2
 set hlsearch
 set incsearch
