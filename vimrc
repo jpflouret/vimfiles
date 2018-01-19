@@ -92,6 +92,7 @@ if has('eval')
   let g:LookupFile_TagExpr='findfile("filenametags", ",;")'
   let g:gundo_close_on_revert=1
   let g:UltiSnipsNoPythonWarning=1
+  let g:bufExplorerVersionWarn=0
 
   if has('unix')
     let g:netrw_browsex_viewer='gnome-open'
