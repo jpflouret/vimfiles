@@ -33,7 +33,7 @@
 	url = https://github.com/tpope/vim-sleuth.git
 [submodule "bundle/bufexplorer"]
 	path = bundle/bufexplorer
-	url = https://github.com/jpflouret/bufexplorer.git
+	url = https://github.com/jlanzarotta/bufexplorer.git
 [submodule "bundle/vim-easymotion"]
 	path = bundle/vim-easymotion
 	url = https://github.com/Lokaltog/vim-easymotion.git
