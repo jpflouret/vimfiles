@@ -4,10 +4,11 @@ if has('eval')
 endif
 
 " Colorscheme {{{1
-if has('syntax')
-  set background=dark
-  silent! colorscheme solarized
-endif
+" This should be on the local vimrc because it varies per system
+"if has('syntax')
+"  set background=dark
+"  silent! colorscheme solarized
+"endif
 
 
 " GUI and font settings {{{1
