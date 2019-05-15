@@ -21,17 +21,6 @@ if has('gui_running') && !gui_initialized
   let gui_initialized=1
 endif
 
-" Font {{{2
-" To make the powerline look good, install fonts from
-" https://github.com/Lokaltog/powerline-fonts/
-" or the patched windows fonts from
-" https://github.com/daagar/powerline-fonts
-if has('win32')
-  set guifont=Droid_Sans_Mono_for_Powerline:h10,Droid_Sans_Mono:h10,Lucida_console:h10
-elseif has('gui_gtk2')
-  set guifont=Droid\ Sans\ Mono\ for\ Powerline\ 10,Droid\ Sans\ Mono\ 10
-endif
-
 " Run vim-sensible now so that we can override the settings {{{1
 runtime! plugin/sensible.vim
 
@@ -97,16 +86,6 @@ if has('eval')
 
   if has('unix')
     let g:netrw_browsex_viewer='gnome-open'
-  endif
-
-  if has('gui_running')
-    let g:airline_powerline_fonts=(&guifont =~ 'Powerline')
-  else
-    if !(&term == 'linux')
-      " This assumes that the terminal is configured with the proper powerline fonts
-      " This would need to be set in the terminal emulator or in the default system font
-      let g:airline_powerline_fonts=1
-    endif
   endif
 
 endif
