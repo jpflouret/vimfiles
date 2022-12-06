@@ -138,6 +138,8 @@ if has('autocmd')
 
     autocmd FileType bindzone setlocal ts=8 sw=8
 
+    autocmd FileType yaml,yml setlocal indentkeys-=0#
+
     " Auto open qf window after grep
     autocmd QuickFixCmdPost [^l]*grep*  cwindow
     autocmd QuickFixCmdPost l*grep*     lwindow
