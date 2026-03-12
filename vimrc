@@ -13,10 +13,13 @@ if has('gui_running') && !gui_initialized
   let gui_initialized=1
 endif
 
+colorscheme torte
+
 " Run vim-sensible now so that we can override the settings
 runtime! plugin/sensible.vim
 
 " Options
+set belloff=all
 set sessionoptions+=resize,winpos
 scriptencoding utf-8
 set encoding=utf-8
