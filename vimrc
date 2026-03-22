@@ -5,6 +5,7 @@ endif
 " GUI Options (applied only once)
 if has('gui_running') && !get(g:, 'gui_initialized', 0)
   set guioptions=aAcemg
+  set lines=60 columns=200
   let g:gui_initialized=1
 endif
 
