@@ -65,6 +65,7 @@ if has('eval')
   let g:airline#extensions#tabline#enabled=1
   let g:camelcasemotion_key = '<leader>'
   let g:bufExplorerVersionWarn=0
+  let g:rooter_patterns = ['.git', 'GenerateProjectFiles.bat', 'Makefile', 'compile_commands.json']
   let g:lsp_diagnostics_echo_cursor=1
   let g:lsp_diagnostics_signs_enabled=1
   let g:lsp_diagnostics_float_cursor=1
@@ -191,8 +192,8 @@ if has('autocmd')
     " Auto cleanup of vim-fugitive buffers
     autocmd BufReadPost fugitive://* set bufhidden=delete
 
-    " Change directory to file path for each buffer
-    autocmd BufEnter,BufReadPost * silent! lcd %:p:h
+    " Change directory to file path for each buffer (replaced by vim-rooter)
+    " autocmd BufEnter,BufReadPost * silent! lcd %:p:h
 
     " Set .md files to ft=markdown
     autocmd BufNewFile,BufRead *.md set filetype=markdown
