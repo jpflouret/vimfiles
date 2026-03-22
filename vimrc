@@ -25,7 +25,7 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 set list
-set listchars=tab:»\ ,trail:·,eol:¬,extends:>,precedes:<,nbsp:+
+set listchars=tab:→\ ,trail:·,extends:⟩,precedes:⟨,nbsp:␣
 if has('mouse')
   set mouse=nvc
 endif
