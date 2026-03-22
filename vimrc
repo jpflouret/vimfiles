@@ -64,6 +64,40 @@ if has('eval')
   let g:airline#extensions#tabline#enabled=1
   let g:camelcasemotion_key = '<leader>'
   let g:bufExplorerVersionWarn=0
+  let g:lsp_diagnostics_echo_cursor=1
+  let g:lsp_diagnostics_signs_enabled=1
+  let g:lsp_diagnostics_float_cursor=1
+  let g:lsp_diagnostics_virtual_text_enabled=1
+  let g:lsp_signature_help_enabled=1
+  let g:asyncomplete_auto_completeopt=0
+  set completeopt=menuone,noinsert,popup
+endif
+
+" Completion menu: Enter or Tab accepts the selected item
+inoremap <expr> <CR> pumvisible() ? "\<C-Y>" : "\<CR>"
+inoremap <expr> <Tab> pumvisible() ? "\<C-Y>" : "\<Tab>"
+
+" vim-lsp key mappings
+if has('eval')
+  function! s:on_lsp_buffer_enabled() abort
+    setlocal omnifunc=lsp#complete
+    setlocal signcolumn=yes
+    nmap <buffer> gd <plug>(lsp-definition)
+    nmap <buffer> gD <plug>(lsp-declaration)
+    nmap <buffer> gr <plug>(lsp-references)
+    nmap <buffer> gi <plug>(lsp-implementation)
+    nmap <buffer> K <plug>(lsp-hover)
+    nmap <buffer> <leader>rn <plug>(lsp-rename)
+    nmap <buffer> [g <plug>(lsp-previous-diagnostic)
+    nmap <buffer> ]g <plug>(lsp-next-diagnostic)
+    nmap <buffer> <leader>ca <plug>(lsp-code-action)
+  endfunction
+  if has('autocmd')
+    augroup lsp_install
+      autocmd!
+      autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+    augroup END
+  endif
 endif
 
 " Syntax and file type detection
