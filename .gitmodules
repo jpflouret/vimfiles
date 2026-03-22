@@ -52,15 +52,6 @@
 [submodule "bundle/tabular"]
 	path = bundle/tabular
 	url = https://github.com/godlygeek/tabular.git
-[submodule "bundle/vim-exchange"]
-	path = bundle/vim-exchange
-	url = https://github.com/tommcdo/vim-exchange.git
-[submodule "bundle/BufOnly.vim"]
-	path = bundle/BufOnly.vim
-	url = https://github.com/vim-scripts/BufOnly.vim.git
-[submodule "bundle/vim-tbone"]
-	path = bundle/vim-tbone
-	url = https://github.com/tpope/vim-tbone.git
 [submodule "bundle/vim-signature"]
 	path = bundle/vim-signature
 	url = https://github.com/kshenoy/vim-signature.git

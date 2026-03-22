@@ -20,6 +20,7 @@ runtime! plugin/sensible.vim
 
 " Options
 set belloff=all
+set clipboard=unnamedplus
 set sessionoptions+=resize,winpos
 scriptencoding utf-8
 set encoding=utf-8
