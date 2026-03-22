@@ -2,14 +2,10 @@ if has('eval')
   silent! execute pathogen#infect()
 endif
 
-" GUI and font settings
 " GUI Options (applied only once)
-if !exists('gui_initialized')
-  let gui_initialized=0
-endif
-if has('gui_running') && !gui_initialized
+if has('gui_running') && !get(g:, 'gui_initialized', 0)
   set guioptions=aAcemg
-  let gui_initialized=1
+  let g:gui_initialized=1
 endif
 
 " Run vim-sensible now so that we can override the settings
@@ -19,8 +15,8 @@ runtime! plugin/sensible.vim
 set belloff=all
 set clipboard=unnamedplus
 set sessionoptions+=resize,winpos
-scriptencoding utf-8
 set encoding=utf-8
+scriptencoding utf-8
 set autoread
 set modeline
 set tabstop=4
@@ -37,7 +33,7 @@ set hidden
 set number
 set signcolumn=yes
 set nofoldenable
-set cmdheight=1
+set cmdheight=2
 set laststatus=2
 set hlsearch
 set incsearch
@@ -54,7 +50,7 @@ set nospell
 set diffopt=filler,vertical,algorithm:patience,indent-heuristic
 set colorcolumn=+1
 " set textwidth=120
-set nowildmenu
+set wildmenu
 
 " Plugin configuration
 if has('eval')
@@ -128,6 +124,9 @@ if has('eval')
   endfunction
 endif
 
+
+" vim-which-key
+nnoremap <silent> <Leader> :<C-U>WhichKey '\'<CR>
 
 " Key mappings
 " Manipulate .vimrc
