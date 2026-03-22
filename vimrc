@@ -38,7 +38,7 @@ endif
 set mousehide
 set shortmess=a
 set hidden
-" set number
+set number
 set nofoldenable
 set cmdheight=1
 set laststatus=2
