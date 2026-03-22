@@ -53,6 +53,11 @@ set diffopt=filler,vertical,algorithm:patience,indent-heuristic
 set colorcolumn=+1
 " set textwidth=120
 set wildmenu
+set cursorline
+if executable('rg')
+  set grepprg=rg\ --vimgrep
+  set grepformat=%f:%l:%c:%m
+endif
 
 " Plugin configuration
 if has('eval')
@@ -124,6 +129,23 @@ if has('eval')
     %s/\s\+$//ge
     retab
   endfunction
+
+  function! s:YankHighlight()
+    let [l1, c1] = [line("'["), col("'[")]
+    let [l2, c2] = [line("']"), col("']")]
+    let lines = []
+    if l1 == l2
+      call add(lines, [l1, c1, c2 - c1 + 1])
+    else
+      call add(lines, [l1, c1, col([l1, '$']) - c1])
+      for l in range(l1 + 1, l2 - 1)
+        call add(lines, [l])
+      endfor
+      call add(lines, [l2, 1, c2])
+    endif
+    let m = matchaddpos('IncSearch', lines)
+    call timer_start(200, {-> matchdelete(m)})
+  endfunction
 endif
 
 
@@ -139,6 +161,8 @@ nnoremap <silent> <Leader>p :source $MYVIMRC<CR>
 nnoremap <silent> <C-P> :Files<CR>
 nnoremap <silent> <Leader>b :Buffers<CR>
 nnoremap <silent> <Leader>/ :Rg<CR>
+nnoremap <silent> <Leader>g :silent grep <C-R><C-W> \| copen<CR>
+nnoremap <silent> <expr> <Leader>c getwininfo()->filter({_,v -> v.quickfix})->len() ? ":cclose\<CR>" : ":copen\<CR>"
 
 " Window manipulation
 nnoremap <silent> <Leader>q :Bdelete<CR>
@@ -163,6 +187,11 @@ cnoremap <C-BS> <C-W>
 if has('autocmd')
   augroup vimrc
     autocmd!
+
+    " Briefly highlight yanked text
+    if exists('##TextYankPost') && has('patch-8.0.1394')
+      autocmd TextYankPost * call s:YankHighlight()
+    endif
 
     " Change formatoptions regardless of filetype
     autocmd FileType * setlocal formatoptions-=o
