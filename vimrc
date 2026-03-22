@@ -98,6 +98,7 @@ if has('eval')
     nmap <buffer> [g <plug>(lsp-previous-diagnostic)
     nmap <buffer> ]g <plug>(lsp-next-diagnostic)
     nmap <buffer> <leader>ca <plug>(lsp-code-action)
+    nmap <buffer> <leader>a <plug>(lsp-switch-source-header)
   endfunction
   if has('autocmd')
     augroup lsp_install
