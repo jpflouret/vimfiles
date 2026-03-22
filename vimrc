@@ -13,8 +13,6 @@ if has('gui_running') && !gui_initialized
   let gui_initialized=1
 endif
 
-colorscheme torte
-
 " Run vim-sensible now so that we can override the settings
 runtime! plugin/sensible.vim
 
@@ -109,6 +107,16 @@ endif
 if has('autocmd')
   filetype plugin indent on
 endif
+
+" Colorscheme
+if has('termguicolors')
+  set termguicolors
+endif
+if has('eval')
+  let g:codedark_modern=1
+  let g:airline_theme='codedark'
+endif
+silent! colorscheme codedark
 
 " Auxiliary functions
 " Cleans up all trailing whitespace and retabs the file
