@@ -7,3 +7,4 @@ tags
 vimrc_local
 vimrc_local_gui
 bundle/fzf/bin/
+.claude/settings.local.json
