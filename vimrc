@@ -66,6 +66,10 @@ if has('eval')
   let g:camelcasemotion_key = '<leader>'
   let g:bufExplorerVersionWarn=0
   let g:rooter_patterns = ['.git', 'GenerateProjectFiles.bat', 'Makefile', 'compile_commands.json']
+  if executable('rg')
+    let $FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git"'
+  endif
+  let g:fzf_colors = {'fg':['fg','Normal'],'bg':['bg','Normal'],'hl':['fg','Comment'],'fg+':['fg','CursorLine','CursorColumn','Normal'],'bg+':['bg','CursorLine','CursorColumn'],'hl+':['fg','Statement'],'info':['fg','PreProc'],'prompt':['fg','Conditional'],'pointer':['fg','Exception'],'marker':['fg','Keyword'],'spinner':['fg','Label'],'header':['fg','Comment']}
   let g:lsp_diagnostics_echo_cursor=1
   let g:lsp_diagnostics_signs_enabled=1
   let g:lsp_diagnostics_float_cursor=1
@@ -127,6 +131,11 @@ endif
 " Manipulate .vimrc
 nnoremap <silent> <Leader>v :e $MYVIMRC<CR>
 nnoremap <silent> <Leader>p :source $MYVIMRC<CR>
+
+" fzf
+nnoremap <silent> <C-P> :Files<CR>
+nnoremap <silent> <Leader>b :Buffers<CR>
+nnoremap <silent> <Leader>/ :Rg<CR>
 
 " Window manipulation
 nnoremap <silent> <Leader>q :Bdelete<CR>
