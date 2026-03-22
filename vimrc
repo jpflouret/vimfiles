@@ -59,6 +59,10 @@ set nowildmenu
 if has('eval')
   let c_space_errors=1
   let g:airline#extensions#tabline#enabled=1
+  let g:airline#extensions#tabline#fnamemod=':t'
+  let g:airline#extensions#default#section_truncate_width={}
+  let g:airline#extensions#lsp#enabled=1
+  let g:airline_powerline_fonts=1
   let g:camelcasemotion_key = '<leader>'
   let g:bufExplorerVersionWarn=0
   let g:rooter_patterns = ['.git', 'GenerateProjectFiles.bat', 'Makefile', 'compile_commands.json']

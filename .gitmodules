@@ -82,3 +82,6 @@
 [submodule "bundle/nord-vim"]
 	path = bundle/nord-vim
 	url = https://github.com/nordtheme/vim.git
+[submodule "bundle/vim-airline-themes"]
+	path = bundle/vim-airline-themes
+	url = https://github.com/vim-airline/vim-airline-themes.git
