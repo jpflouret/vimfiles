@@ -1,4 +1,3 @@
-set nocompatible
 if has('eval')
   silent! execute pathogen#infect()
 endif
@@ -24,7 +23,6 @@ scriptencoding utf-8
 set encoding=utf-8
 set autoread
 set modeline
-set history=1000
 set tabstop=4
 set shiftwidth=4
 set expandtab
@@ -100,14 +98,6 @@ if has('eval')
   endif
 endif
 
-" Syntax and file type detection
-if has('syntax') && (&t_Co > 2 || has('gui_running'))
-  syntax on
-endif
-if has('autocmd')
-  filetype plugin indent on
-endif
-
 " Colorscheme
 if has('termguicolors')
   set termguicolors
@@ -126,16 +116,6 @@ if has('eval')
     %s/\s\+$//ge
     retab
   endfunction
-endif
-
-
-" From vimrc_example.vim
-" Convenient command to see the difference between the current buffer and the
-" file it was loaded from, thus the changes you made.
-" Only define it when not defined already.
-if has('eval') && !exists(":DiffOrig")
-  command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis
-        \ | wincmd p | diffthis
 endif
 
 
@@ -202,9 +182,6 @@ if has('autocmd')
 
     " Change directory to file path for each buffer (replaced by vim-rooter)
     " autocmd BufEnter,BufReadPost * silent! lcd %:p:h
-
-    " Set .md files to ft=markdown
-    autocmd BufNewFile,BufRead *.md set filetype=markdown
 
   augroup END
 end
