@@ -79,6 +79,7 @@ if has('eval')
   let g:lsp_diagnostics_float_cursor=1
   let g:lsp_diagnostics_virtual_text_enabled=1
   let g:lsp_signature_help_enabled=1
+  let g:lsp_code_action_ui='float'
   let g:asyncomplete_auto_completeopt=0
   set completeopt=menuone,noinsert,popup
 endif
