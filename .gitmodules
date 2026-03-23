@@ -34,14 +34,6 @@
 	path = bundle/vim-sleuth
 	url = https://github.com/tpope/vim-sleuth.git
 	ignore = dirty
-[submodule "bundle/bufexplorer"]
-	path = bundle/bufexplorer
-	url = https://github.com/jlanzarotta/bufexplorer.git
-	ignore = dirty
-[submodule "bundle/vim-easymotion"]
-	path = bundle/vim-easymotion
-	url = https://github.com/easymotion/vim-easymotion.git
-	ignore = dirty
 [submodule "bundle/vim-airline"]
 	path = bundle/vim-airline
 	url = https://github.com/vim-airline/vim-airline.git
@@ -57,10 +49,6 @@
 [submodule "bundle/vim-bbye"]
 	path = bundle/vim-bbye
 	url = https://github.com/moll/vim-bbye.git
-	ignore = dirty
-[submodule "bundle/CamelCaseMotion"]
-	path = bundle/CamelCaseMotion
-	url = https://github.com/bkad/CamelCaseMotion.git
 	ignore = dirty
 [submodule "bundle/alternate"]
 	path = bundle/alternate
@@ -130,3 +118,9 @@
 	path = bundle/vim-which-key
 	url = https://github.com/liuchengxu/vim-which-key.git
 	ignore = dirty
+[submodule "bundle/vim-obsession"]
+	path = bundle/vim-obsession
+	url = https://github.com/tpope/vim-obsession.git
+[submodule "bundle/vim-lspfuzzy"]
+	path = bundle/vim-lspfuzzy
+	url = https://github.com/jiz4oh/vim-lspfuzzy.git

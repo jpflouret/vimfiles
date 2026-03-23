@@ -67,8 +67,7 @@ if has('eval')
   let g:airline#extensions#default#section_truncate_width={}
   let g:airline#extensions#lsp#enabled=1
   let g:airline_powerline_fonts=1
-  let g:camelcasemotion_key = '<leader>'
-  let g:bufExplorerVersionWarn=0
+  let g:airline_inactive_collapse=0
   let g:rooter_patterns = ['.git', 'GenerateProjectFiles.bat', 'Makefile', 'compile_commands.json']
   if executable('rg')
     let $FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git"'
@@ -93,16 +92,18 @@ if has('eval')
   function! s:on_lsp_buffer_enabled() abort
     setlocal omnifunc=lsp#complete
     setlocal signcolumn=yes
-    nmap <buffer> gd <plug>(lsp-definition)
-    nmap <buffer> gD <plug>(lsp-declaration)
-    nmap <buffer> gr <plug>(lsp-references)
-    nmap <buffer> gi <plug>(lsp-implementation)
+    nmap <buffer> gd :FzfLspDefinition<CR>
+    nmap <buffer> gD :FzfLspDeclaration<CR>
+    nmap <buffer> gr :FzfLspReferences<CR>
+    nmap <buffer> gi :FzfLspImplementation<CR>
     nmap <buffer> K <plug>(lsp-hover)
     nmap <buffer> <leader>rn <plug>(lsp-rename)
     nmap <buffer> [g <plug>(lsp-previous-diagnostic)
     nmap <buffer> ]g <plug>(lsp-next-diagnostic)
-    nmap <buffer> <leader>ca <plug>(lsp-code-action)
+    nmap <buffer> <leader>ca :FzfLspCodeAction<CR>
     nmap <buffer> <leader>a <plug>(lsp-switch-source-header)
+    nmap <buffer> <leader>f <plug>(lsp-document-format)
+    vmap <buffer> <leader>f <plug>(lsp-document-range-format)
   endfunction
   if has('autocmd')
     augroup lsp_install
@@ -129,6 +130,39 @@ silent! colorscheme codedark
 " Auxiliary functions
 " Cleans up all trailing whitespace and retabs the file
 if has('eval')
+  command! SessionReset only | %bdelete
+  command! DiffOff call <SID>DiffOff()
+  function! <SID>DiffOff()
+    let l:scratchbufs = []
+    for l:buf in getbufinfo()
+      let l:name = bufname(l:buf.bufnr)
+      let l:is_scratch = getbufvar(l:buf.bufnr, '&buftype') ==# 'nofile' && getbufvar(l:buf.bufnr, '&diff')
+      let l:is_fugitive = l:name =~# '^fugitive://' && getbufvar(l:buf.bufnr, '&diff')
+      if l:is_scratch || l:is_fugitive
+        call add(l:scratchbufs, l:buf.bufnr)
+      endif
+    endfor
+    diffoff!
+    for l:buf in l:scratchbufs
+      execute 'bwipeout ' . l:buf
+    endfor
+  endfunction
+  command! DiffGit Gdiffsplit
+  command! DiffP4 call <SID>DiffP4()
+  function! <SID>DiffP4()
+    let l:file = expand('%:p')
+    let l:have = systemlist('p4 have ' . shellescape(l:file))
+    let l:name = len(l:have) ? matchstr(l:have[0], '#\d\+') : '#have'
+    diffthis
+    vert new
+    set buftype=nofile
+    execute 'file ' . fnameescape(fnamemodify(l:file, ':t') . l:name)
+    execute 'silent read !p4 print -q ' . shellescape(l:file)
+    0d_
+    setlocal nomodifiable
+    diffthis
+    wincmd p
+  endfunction
   command! Cleanup call <SID>CleanupFile()
   function! <SID>CleanupFile()
     %s/\s\+$//ge
@@ -171,14 +205,74 @@ nnoremap <silent> <expr> <Leader>c getwininfo()->filter({_,v -> v.quickfix})->le
 
 " Window manipulation
 nnoremap <silent> <Leader>q :Bdelete<CR>
-nnoremap <silent> <Leader>bd :Bdelete<CR>
 nnoremap <silent> <Leader>a :A<CR>
 nnoremap <silent> <C-S> :update<CR>
 inoremap <silent> <C-S> <C-O>:update<CR>
 noremap <silent> <C-TAB> :bnext<CR>
 noremap <silent> <S-C-TAB> :bprev<CR>
-noremap <silent> <C-F6> :bnext<CR>
-noremap <silent> <C-F4> :Bdelete<CR>
+
+" Toggle bottom terminal
+nnoremap <silent> <C-`> :call <SID>ToggleTerminal()<CR>
+tnoremap <silent> <C-`> <C-W>:call <SID>ToggleTerminal()<CR>
+if has('eval')
+  function! s:ToggleTerminal()
+    let l:buf = get(g:, 'terminal_buf', -1)
+    if l:buf != -1 && bufexists(l:buf)
+      let l:win = bufwinnr(l:buf)
+      if l:win != -1
+        execute l:win . 'wincmd w'
+        hide
+      else
+        execute 'botright sbuffer ' . l:buf
+        resize 15
+      endif
+    else
+      botright terminal
+      resize 15
+      let g:terminal_buf = bufnr('%')
+    endif
+  endfunction
+endif
+
+" Window navigation
+nnoremap <C-H> <C-W>h
+nnoremap <C-J> <C-W>j
+nnoremap <C-K> <C-W>k
+nnoremap <C-L> <C-W>l
+tnoremap <C-H> <C-W>h
+tnoremap <C-J> <C-W>j
+tnoremap <C-K> <C-W>k
+tnoremap <C-L> <C-W>l
+
+" IDE-style mappings
+nnoremap <silent> <A-o> :A<CR>
+nnoremap <silent> <F2> <plug>(lsp-rename)
+nnoremap <silent> <F12> :FzfLspDefinition<CR>
+nnoremap <silent> <S-F12> :FzfLspReferences<CR>
+nnoremap <silent> <C-S-o> :FzfLspDocumentSymbol<CR>
+nnoremap <silent> <C-t> :FzfLspWorkspaceSymbol<CR>
+nnoremap <silent> <A-Up> :move .-2<CR>==
+nnoremap <silent> <A-Down> :move .+1<CR>==
+vnoremap <silent> <A-Up> :move '<-2<CR>gv=gv
+vnoremap <silent> <A-Down> :move '>+1<CR>gv=gv
+nnoremap <silent> <A-g> :FzfLspDefinition<CR>
+nnoremap <silent> <C-LeftMouse> <LeftMouse>:FzfLspDefinition<CR>
+nnoremap <silent> <X1Mouse> <C-O>
+nnoremap <silent> <X2Mouse> <C-I>
+nnoremap <silent> <A-m> :FzfLspDocumentSymbol<CR>
+nnoremap <silent> <A-S-o> :Files<CR>
+nnoremap <silent> <A-S-s> :FzfLspWorkspaceSymbol<CR>
+nnoremap <silent> <A-Left> <C-O>
+nnoremap <silent> <A-Right> <C-I>
+nnoremap <silent> <Leader>gs :Git<CR>
+nnoremap <silent> <Leader>gb :Git blame<CR>
+nnoremap <silent> <Leader>do :DiffOrig<CR>
+nnoremap <silent> <Leader>dg :DiffGit<CR>
+nnoremap <silent> <Leader>dp :DiffP4<CR>
+nnoremap <silent> <Leader>dq :DiffOff<CR>
+nnoremap <silent> <C-S-f> :Rg<CR>
+nnoremap <silent> <C-/> :Commentary<CR>
+vnoremap <silent> <C-/> :Commentary<CR>
 
 " Function keys
 nnoremap <silent> <F3> :nohlsearch<CR>
@@ -225,6 +319,12 @@ if has('autocmd')
     autocmd BufReadPost *
           \ if line("'\"") > 1 && line("'\"") <= line("$") |
           \   exe "normal! g`\"" |
+          \ endif
+
+    " Auto-restore session if Session.vim exists and no files were passed
+    autocmd VimEnter * nested
+          \ if !argc() && filereadable('Session.vim') |
+          \   source Session.vim |
           \ endif
 
     " Auto cleanup of vim-fugitive buffers
