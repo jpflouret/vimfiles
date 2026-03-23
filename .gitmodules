@@ -124,3 +124,6 @@
 [submodule "bundle/vim-lspfuzzy"]
 	path = bundle/vim-lspfuzzy
 	url = https://github.com/jiz4oh/vim-lspfuzzy.git
+[submodule "bundle/vim-vp4"]
+	path = bundle/vim-vp4
+	url = https://github.com/ngemily/vim-vp4.git

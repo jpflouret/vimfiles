@@ -148,22 +148,6 @@ if has('eval')
       execute 'bwipeout ' . l:buf
     endfor
   endfunction
-  command! DiffGit Gdiffsplit
-  command! DiffP4 call <SID>DiffP4()
-  function! <SID>DiffP4()
-    let l:file = expand('%:p')
-    let l:have = systemlist('p4 have ' . shellescape(l:file))
-    let l:name = len(l:have) ? matchstr(l:have[0], '#\d\+') : '#have'
-    diffthis
-    vert new
-    set buftype=nofile
-    execute 'file ' . fnameescape(fnamemodify(l:file, ':t') . l:name)
-    execute 'silent read !p4 print -q ' . shellescape(l:file)
-    0d_
-    setlocal nomodifiable
-    diffthis
-    wincmd p
-  endfunction
   command! Cleanup call <SID>CleanupFile()
   function! <SID>CleanupFile()
     %s/\s\+$//ge
@@ -268,9 +252,8 @@ nnoremap <silent> <A-Right> <C-I>
 nnoremap <silent> <Leader>gs :Git<CR>
 nnoremap <silent> <Leader>gb :Git blame<CR>
 nnoremap <silent> <Leader>do :DiffOrig<CR>
-nnoremap <silent> <Leader>dg :DiffGit<CR>
-nnoremap <silent> <Leader>dp :DiffP4<CR>
-nnoremap <silent> <Leader>dq :DiffOff<CR>
+nnoremap <silent> <Leader>dg :Gdiffsplit<CR>
+nnoremap <silent> <Leader>dp :Vp4Diff<CR>
 nnoremap <silent> <C-S-f> :Rg<CR>
 nnoremap <silent> <C-/> :Commentary<CR>
 vnoremap <silent> <C-/> :Commentary<CR>
@@ -330,6 +313,14 @@ if has('autocmd')
 
     " Auto cleanup of vim-fugitive buffers
     autocmd BufReadPost fugitive://* set bufhidden=delete
+
+    " Press q to close diff mode, disable LSP on scratch diff buffers
+    autocmd OptionSet diff if &diff
+          \ | nnoremap <buffer> <silent> q :DiffOff<CR>
+          \ | if &buftype ==# 'nofile' | let b:lsp_diagnostics_enabled = 0 | endif
+          \ | else
+          \ | silent! nunmap <buffer> q
+          \ | endif
 
     " Change directory to file path for each buffer (replaced by vim-rooter)
     " autocmd BufEnter,BufReadPost * silent! lcd %:p:h
