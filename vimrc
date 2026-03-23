@@ -68,6 +68,7 @@ if has('eval')
   let g:airline#extensions#lsp#enabled=1
   let g:airline_powerline_fonts=1
   let g:airline_inactive_collapse=0
+  let g:netrw_fastbrowse = 0
   let g:rooter_patterns = ['.git', 'GenerateProjectFiles.bat', 'Makefile', 'compile_commands.json']
   if executable('rg')
     let $FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git"'
