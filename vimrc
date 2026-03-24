@@ -10,6 +10,12 @@ if has('gui_running') && !get(g:, 'gui_initialized', 0)
   let g:gui_initialized=1
 endif
 
+if has("gui_macvim")
+  set guifont=CaskaydiaCoveNFM-Regular:h14
+  set lines=80 columns=200
+  let g:gui_initialized=1
+endif
+
 " Run vim-sensible now so that we can override the settings
 runtime! plugin/sensible.vim
 
