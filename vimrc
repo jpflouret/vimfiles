@@ -10,7 +10,7 @@ if has('gui_running') && !get(g:, 'gui_initialized', 0)
   let g:gui_initialized=1
 endif
 
-if has("gui_macvim")
+if has("gui_macvim") && has("gui_running")
   set guifont=CaskaydiaCoveNFM-Regular:h14
   set lines=80 columns=200
   let g:gui_initialized=1
